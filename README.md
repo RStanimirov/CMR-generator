@@ -81,6 +81,8 @@ Run the test suite using standard unittest:
 python3 -m unittest discover tests
 ```
 
-## License
+## License & Disclaimer
 
-MIT License. Free for commercial and logistics operations.
+**License:** Distributed under the MIT License.
+
+**Disclaimer:** This software is provided "as is", without warranty of any kind. International road transport regulations and local customs enforcement requirements can vary significantly by jurisdiction. Users are strictly advised to validate the generated PDF output against local legal requirements and official guidelines before using it for live freight operations.
