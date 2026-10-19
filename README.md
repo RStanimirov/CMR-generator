@@ -62,41 +62,6 @@ python3 -m python_cmr.cli validate --input my_consignment.json
 
 ---
 
-## 🐍 Python Library Usage
-
-```python
-from python_cmr import CMRDocument, Party, CargoItem, build_pdf_document
-
-doc = CMRDocument(
-    consignment_number="CMR-2026-EU-104",
-    sender=Party(
-        name="FREIGHT SOLUTIONS GMBH",
-        address="Am Hafen 14",
-        city_postal="20457 Hamburg",
-        country="Germany"
-    ),
-    consignee=Party(
-        name="PARIS LOGISTIQUE EXPRESS",
-        address="35 Rue des Batignolles",
-        city_postal="75017 Paris",
-        country="France"
-    ),
-    delivery_place="Paris, France",
-    taking_over_place="Hamburg, Germany",
-    taking_over_date="2026-10-21",
-    items=[
-        CargoItem(
-            marks_and_numbers="PLX-01/10",
-            packages_count=10,
-            packing_method="Euro-pallets",
-            nature_of_goods="Electronic Equipment",
-            statistical_number="8504.40.82",
-            gross_weight_kg=2400.0,
-            volume_m3=12.5
-        )
-    ]
-)
-
 # Build PDF for all 4 official copies
 pdf_bytes = build_pdf_document(doc, copies=["1", "2", "3", "4"])
 
