@@ -61,14 +61,13 @@ python3 -m python_cmr.cli validate --input my_consignment.json
 ```
 
 # Build PDF for all 4 official copies
+```bash
 pdf_bytes = build_pdf_document(doc, copies=["1", "2", "3", "4"])
 
 with open("waybill.pdf", "wb") as f:
     f.write(pdf_bytes)
 ```
-
----
-
+```
 ## Project Structure
 
 ```
