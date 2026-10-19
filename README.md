@@ -1,26 +1,22 @@
-# Python CMR Generator 🚛📑
-### International Consignment Note / Lettre de Voiture Internationale (UN Geneva Convention 1956)
+# Python CMR Generator
 
-A functional, compliant generator for international road transport **CMR Consignment Notes**. Includes zero-dependency pure Python PDF generation, full CLI, validation engine, and 4-copy official booklet support (Red, Blue, Green, Black).
+A functional, compliant generator for international road transport CMR Consignment Notes according to the UN Geneva Convention 1956 standard. 
 
----
+Features pure Python PDF generation with zero external dependencies, built-in validation, and automated support for the official 4-copy booklet layout (Red, Blue, Green, Black).
 
-## Features
+## Key Features
 
-- **Full 24-Box Coverage**: Precise adherence to the UN Geneva CMR Convention 1956 standard layout.
-- **Zero-Dependency PDF Engine**: Runs out of the box on standard Python 3.8+ without `pip install` required.
-- **4 Official Copy Color Schemes**:
-  - `Copy 1 (Red)`: Exemplaire pour l'expéditeur (Sender)
-  - `Copy 2 (Blue)`: Exemplaire pour le destinataire (Consignee)
-  - `Copy 3 (Green)`: Exemplaire pour le transporteur (Carrier)
-  - `Copy 4 (Black)`: Exemplaire pour l'administration (Carrier office)
-  - `All Copies`: Automatically generates the complete multi-page document bundle.
-- **Cargo Calculation**: Auto-summing packages count, total gross weight (kg), and volume (m³).
-- **Dangerous Goods (ADR)**: Dedicated fields for UN numbers, ADR hazard classes, and packing groups.
-- **Validation Engine**: Flags missing mandatory legal fields before dispatch.
-- **CLI & Web Ready**: Command-line interface + JSON import/export + web preview interface.
-
----
+* **Full 24-Box Coverage:** Comliance with the official UN Geneva CMR Convention 1956 layout.
+* **Zero-Dependency PDF Engine:** Runs out of the box on standard Python 3.8+ without additional package installations.
+* **4-Copy Booklet Support:** Generates multi-page bundles with official color schemes:
+  * Copy 1 (Red): Sender
+  * Copy 2 (Blue): Consignee
+  * Copy 3 (Green): Carrier
+  * Copy 4 (Black): Carrier office
+* **Automated Calculations:** Auto-sums package count, total gross weight (kg), and volume (m³).
+* **Dangerous Goods (ADR):** Integrated fields for UN numbers, ADR hazard classes, and packing groups.
+* **Validation Engine:** Flags missing mandatory fields before document generation.
+* **Interfaces:** CLI, JSON import/export, and web preview integration.
 
 ## Quickstart
 
@@ -40,58 +36,51 @@ The core engine runs on standard Python 3.8+ without mandatory dependencies. If 
 pip install -r requirements.txt
 ```
 
-### Generate Sample CMR PDF
+### Command Line Interface
+
+Generate a sample CMR bundle:
 ```bash
 python3 -m python_cmr.cli sample --copies all --output cmr_sample.pdf
 ```
 
-### Generate from Custom JSON
+Generate from a custom JSON file:
 ```bash
 python3 -m python_cmr.cli generate --input my_consignment.json --output consignment.pdf --copies all
 ```
 
-### Export JSON Template
+Export a blank JSON template:
 ```bash
 python3 -m python_cmr.cli template --output template.json
 ```
 
-### Validate CMR Data
+Validate consignment data:
 ```bash
 python3 -m python_cmr.cli validate --input my_consignment.json
 ```
 
-# Build PDF for all 4 official copies
-```bash
-pdf_bytes = build_pdf_document(doc, copies=["1", "2", "3", "4"])
-
-with open("waybill.pdf", "wb") as f:
-    f.write(pdf_bytes)
-```
-```
 ## Project Structure
 
-```
+```text
 ├── python_cmr/
 │   ├── __init__.py           # Package exports
 │   ├── models.py             # Dataclass schemas & cargo math
 │   ├── pure_pdf_writer.py    # Zero-dependency vector PDF 1.4 engine
 │   ├── reportlab_writer.py   # Optional ReportLab integration
 │   └── cli.py                # Command-line interface
+├── src/                      # Interactive Web GUI (React + Tailwind)
 ├── tests/
 │   └── test_cmr.py           # Unit tests
-├── requirements.txt          # Optional dev packages
 ├── pyproject.toml            # Packaging configuration
-└── src/                      # Interactive Web GUI (React + Tailwind)
+└── requirements.txt          # Optional dev packages
 ```
 
 ## Testing
 
-Run test suite:
+Run the test suite using standard unittest:
 ```bash
 python3 -m unittest discover tests
 ```
 
----
+## License
 
-## 📄 License
 MIT License. Free for commercial and logistics operations.
