@@ -24,22 +24,38 @@ A functional, compliant generator for international road transport **CMR Consign
 
 ## Quickstart
 
-### 1. Generate Sample CMR PDF
+### Frontend Setup (TypeScript / React)
+```bash
+# Install dependencies
+npm install
+
+# Start the local Vite development server
+npm run dev
+```
+
+### Backend Setup (Python)
+The core engine runs on standard Python 3.8+ without mandatory dependencies. If you wish to use optional features or run development tools:
+```bash
+# Optional: Install development requirements
+pip install -r requirements.txt
+```
+
+### Generate Sample CMR PDF
 ```bash
 python3 -m python_cmr.cli sample --copies all --output cmr_sample.pdf
 ```
 
-### 2. Generate from Custom JSON
+### Generate from Custom JSON
 ```bash
 python3 -m python_cmr.cli generate --input my_consignment.json --output consignment.pdf --copies all
 ```
 
-### 3. Export JSON Template
+### Export JSON Template
 ```bash
 python3 -m python_cmr.cli template --output template.json
 ```
 
-### 4. Validate CMR Data
+### Validate CMR Data
 ```bash
 python3 -m python_cmr.cli validate --input my_consignment.json
 ```
