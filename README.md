@@ -1,15 +1,18 @@
 # Python CMR Generator
 
-A functional, compliant generator for international road transport CMR Consignment Notes according to the UN Geneva Convention 1956 standard. 
+A functional generator for international road transport CMR (International Consignment Note). 
 
 Features pure Python PDF generation with zero external dependencies, built-in validation, and automated support for the official 4-copy booklet layout (Red, Blue, Green, Black).
 
+## Note on Purpose
+
+The primary purpose of this application is to demonstrate software engineering techniques, architectural patterns, and data modeling (such as zero-dependency vector rendering). It is intended as a technical demonstration rather than a certified production-ready solution for official freight registration.
+
 ## Key Features
 
-* **Full 24-Box Coverage:** Comliance with the official UN Geneva CMR Convention 1956 layout.
 * **Zero-Dependency PDF Engine:** Runs out of the box on standard Python 3.8+ without additional package installations.
-* **4-Copy Booklet Support:** Generates multi-page bundles with official color schemes:
-  * Copy 1 (Red): Sender
+* **4-Copy Booklet Support:** Generates multi-page bundles with custom color schemes:
+  * Copy 1 (Violet): Sender
   * Copy 2 (Blue): Consignee
   * Copy 3 (Green): Carrier
   * Copy 4 (Black): Carrier office
@@ -83,6 +86,6 @@ python3 -m unittest discover tests
 
 ## License & Disclaimer
 
-**License:** Distributed under the MIT License.
+**License:** Distributed under the MIT License. For educational and logistics evaluation purposes.
 
-**Disclaimer:** This software is provided "as is", without warranty of any kind. International road transport regulations and local customs enforcement requirements can vary significantly by jurisdiction. Users are strictly advised to validate the generated PDF output against local legal requirements and official guidelines before using it for live freight operations.
+**Disclaimer:** This software is provided "as is", without warranty of any kind, express or implied. International road transport regulations and local customs enforcement requirements vary significantly by jurisdiction. Since this project is primarily a demonstration of software architecture and modeling rather than a certified tool, users are strictly advised to manually validate the generated PDF output against local legal requirements and official guidelines before using it for live logistics operations.
