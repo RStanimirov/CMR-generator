@@ -60,8 +60,6 @@ python3 -m python_cmr.cli template --output template.json
 python3 -m python_cmr.cli validate --input my_consignment.json
 ```
 
----
-
 # Build PDF for all 4 official copies
 pdf_bytes = build_pdf_document(doc, copies=["1", "2", "3", "4"])
 
