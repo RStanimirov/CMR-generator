@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "python-cmr"
+version = "1.0.0"
+description = "International Consignment Note (CMR Convention 1956) Generator in Python"
+readme = "README.md"
+authors = [{ name = "CMR Pro Logistics" }]
+license = { text = "MIT" }
+keywords = ["cmr", "logistics", "consignment-note", "freight", "transport", "waybill", "pdf"]
+requires-python = ">=3.8"
+dependencies = []
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "reportlab>=4.0.0",
+    "fastapi>=0.110.0",
+    "uvicorn>=0.27.0"
+]
+
+[project.scripts]
+cmr-gen = "python_cmr.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["python_cmr*"]
