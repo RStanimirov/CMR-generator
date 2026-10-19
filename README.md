@@ -1,11 +1,11 @@
 # Python CMR Generator 🚛📑
 ### International Consignment Note / Lettre de Voiture Internationale (UN Geneva Convention 1956)
 
-A professional, compliant generator for international road transport **CMR Consignment Notes** (Boxes 1 through 24). Includes zero-dependency pure Python PDF generation, full CLI, validation engine, and 4-copy official booklet support (Red, Blue, Green, Black).
+A functional, compliant generator for international road transport **CMR Consignment Notes**. Includes zero-dependency pure Python PDF generation, full CLI, validation engine, and 4-copy official booklet support (Red, Blue, Green, Black).
 
 ---
 
-## ✨ Features
+## Features
 
 - **Full 24-Box Coverage**: Precise adherence to the UN Geneva CMR Convention 1956 standard layout.
 - **Zero-Dependency PDF Engine**: Runs out of the box on standard Python 3.8+ without `pip install` required.
@@ -22,7 +22,7 @@ A professional, compliant generator for international road transport **CMR Consi
 
 ---
 
-## 🚀 Quickstart
+## Quickstart
 
 ### 1. Generate Sample CMR PDF
 ```bash
@@ -90,7 +90,7 @@ with open("waybill.pdf", "wb") as f:
 
 ---
 
-## 📦 Project Structure
+## Project Structure
 
 ```
 ├── python_cmr/
@@ -106,7 +106,7 @@ with open("waybill.pdf", "wb") as f:
 └── src/                      # Interactive Web GUI (React + Tailwind)
 ```
 
-## 🧪 Testing
+## Testing
 
 Run test suite:
 ```bash
