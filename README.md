@@ -45,22 +45,22 @@ pip install -r requirements.txt
 
 Generate a sample CMR bundle:
 ```bash
-python3 -m python_cmr.cli sample --copies all --output cmr_sample.pdf
+python -m python_cmr.cli sample --copies all --output cmr_sample.pdf
 ```
 
 Generate from a custom JSON file:
 ```bash
-python3 -m python_cmr.cli generate --input my_consignment.json --output consignment.pdf --copies all
+python -m python_cmr.cli generate --input my_consignment.json --output consignment.pdf --copies all
 ```
 
 Export a blank JSON template:
 ```bash
-python3 -m python_cmr.cli template --output template.json
+python -m python_cmr.cli template --output template.json
 ```
 
 Validate consignment data:
 ```bash
-python3 -m python_cmr.cli validate --input my_consignment.json
+python -m python_cmr.cli validate --input my_consignment.json
 ```
 
 ## Project Structure
@@ -83,7 +83,7 @@ python3 -m python_cmr.cli validate --input my_consignment.json
 
 Run the test suite using standard unittest:
 ```bash
-python3 -m unittest discover tests
+python -m unittest discover tests
 ```
 
 ## License & Disclaimer
