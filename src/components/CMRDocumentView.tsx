@@ -145,50 +145,50 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
               {/* Box 1: Sender */}
               <div
                 onClick={() => onEditBox?.(1)}
-                className="p-2 border-r border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors relative min-h-[96px] flex flex-col justify-start"
+                className="p-2.5 border-r border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors relative min-h-[96px] flex flex-col justify-start"
               >
-                <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-1 mb-1.5">
-                  <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                    1 Expéditeur <span className="text-neutral-500 font-medium">/ Sender</span>
+                <div className="flex items-baseline justify-between border-b border-neutral-300 pb-1 mb-1.5">
+                  <div className="text-[11px] font-bold text-neutral-900 uppercase tracking-tight">
+                    1 Expéditeur <span className="text-neutral-600 font-medium">/ Sender</span>
                   </div>
-                  <div className="text-[8px] text-neutral-400 font-normal">
+                  <div className="text-[9.5px] text-neutral-500 font-normal">
                     (nom, adresse, pays)
                   </div>
                 </div>
-                <div className="text-xs font-bold text-neutral-900 tracking-tight">{consignment.sender.name || '—'}</div>
-                <div className="text-[11px] text-neutral-700 leading-snug">{consignment.sender.address}</div>
-                <div className="text-[11px] text-neutral-700 font-medium">
+                <div className="text-sm font-bold text-neutral-950 tracking-tight">{consignment.sender.name || '—'}</div>
+                <div className="text-xs text-neutral-800 leading-snug">{consignment.sender.address}</div>
+                <div className="text-xs text-neutral-800 font-semibold">
                   {consignment.sender.cityPostal} {consignment.sender.country.toUpperCase()}
                 </div>
                 {consignment.sender.contactPhone && (
-                  <div className="text-[10px] text-neutral-500 mt-0.5">Tel: {consignment.sender.contactPhone}</div>
+                  <div className="text-[11px] text-neutral-600 mt-0.5">Tel: {consignment.sender.contactPhone}</div>
                 )}
                 {consignment.sender.vatId && (
-                  <div className="text-[10px] text-neutral-500">VAT: {consignment.sender.vatId}</div>
+                  <div className="text-[11px] text-neutral-600">VAT: {consignment.sender.vatId}</div>
                 )}
               </div>
 
               {/* Box 16: Carrier */}
               <div
                 onClick={() => onEditBox?.(16)}
-                className="p-2 hover:bg-neutral-50/80 cursor-pointer transition-colors relative min-h-[96px] flex flex-col justify-between"
+                className="p-2.5 hover:bg-neutral-50/80 cursor-pointer transition-colors relative min-h-[96px] flex flex-col justify-between"
               >
                 <div>
-                  <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-1 mb-1.5">
-                    <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                      16 Transporteur <span className="text-neutral-500 font-medium">/ Carrier</span>
+                  <div className="flex items-baseline justify-between border-b border-neutral-300 pb-1 mb-1.5">
+                    <div className="text-[11px] font-bold text-neutral-900 uppercase tracking-tight">
+                      16 Transporteur <span className="text-neutral-600 font-medium">/ Carrier</span>
                     </div>
-                    <div className="text-[8px] text-neutral-400 font-normal">
+                    <div className="text-[9.5px] text-neutral-500 font-normal">
                       (nom, adresse, pays)
                     </div>
                   </div>
-                  <div className="text-xs font-bold text-neutral-900 tracking-tight">{consignment.carrier.name || '—'}</div>
-                  <div className="text-[11px] text-neutral-700 leading-snug">{consignment.carrier.address}</div>
-                  <div className="text-[11px] text-neutral-700 font-medium">
+                  <div className="text-sm font-bold text-neutral-950 tracking-tight">{consignment.carrier.name || '—'}</div>
+                  <div className="text-xs text-neutral-800 leading-snug">{consignment.carrier.address}</div>
+                  <div className="text-xs text-neutral-800 font-semibold">
                     {consignment.carrier.cityPostal} {consignment.carrier.country.toUpperCase()}
                   </div>
                 </div>
-                <div className="mt-1.5 pt-1 border-t border-neutral-100 flex items-center gap-3 text-[10px] font-mono font-semibold" style={{ color: meta.accentHex }}>
+                <div className="mt-1 pt-1 border-t border-neutral-200 flex items-center gap-3 text-[11px] font-mono font-bold" style={{ color: meta.accentHex }}>
                   <span>Tractor: {consignment.carrierTruckPlate || '—'}</span>
                   <span>Trailer: {consignment.carrierTrailerPlate || '—'}</span>
                 </div>
@@ -200,26 +200,26 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
               {/* Box 2: Consignee */}
               <div
                 onClick={() => onEditBox?.(2)}
-                className="p-2 border-r border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors relative min-h-[96px] flex flex-col justify-start"
+                className="p-2.5 border-r border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors relative min-h-[96px] flex flex-col justify-start"
               >
-                <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-1 mb-1.5">
-                  <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                    2 Destinataire <span className="text-neutral-500 font-medium">/ Consignee</span>
+                <div className="flex items-baseline justify-between border-b border-neutral-300 pb-1 mb-1.5">
+                  <div className="text-[11px] font-bold text-neutral-900 uppercase tracking-tight">
+                    2 Destinataire <span className="text-neutral-600 font-medium">/ Consignee</span>
                   </div>
-                  <div className="text-[8px] text-neutral-400 font-normal">
+                  <div className="text-[9.5px] text-neutral-500 font-normal">
                     (nom, adresse, pays)
                   </div>
                 </div>
-                <div className="text-xs font-bold text-neutral-900 tracking-tight">{consignment.consignee.name || '—'}</div>
-                <div className="text-[11px] text-neutral-700 leading-snug">{consignment.consignee.address}</div>
-                <div className="text-[11px] text-neutral-700 font-medium">
+                <div className="text-sm font-bold text-neutral-950 tracking-tight">{consignment.consignee.name || '—'}</div>
+                <div className="text-xs text-neutral-800 leading-snug">{consignment.consignee.address}</div>
+                <div className="text-xs text-neutral-800 font-semibold">
                   {consignment.consignee.cityPostal} {consignment.consignee.country.toUpperCase()}
                 </div>
                 {consignment.consignee.contactPhone && (
-                  <div className="text-[10px] text-neutral-500 mt-0.5">Tel: {consignment.consignee.contactPhone}</div>
+                  <div className="text-[11px] text-neutral-600 mt-0.5">Tel: {consignment.consignee.contactPhone}</div>
                 )}
                 {consignment.consignee.vatId && (
-                  <div className="text-[10px] text-neutral-500">VAT: {consignment.consignee.vatId}</div>
+                  <div className="text-[11px] text-neutral-600">VAT: {consignment.consignee.vatId}</div>
                 )}
               </div>
 
@@ -227,33 +227,33 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
               <div className="flex flex-col">
                 <div
                   onClick={() => onEditBox?.(17)}
-                  className="p-2 border-b border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors flex-1"
+                  className="p-2.5 border-b border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors flex-1"
                 >
-                  <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                    <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                      17 Transporteurs successifs <span className="text-neutral-500 font-medium">/ Successive carriers</span>
+                  <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                    <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                      17 Transporteurs successifs <span className="text-neutral-600 font-medium">/ Successive carriers</span>
                     </div>
                   </div>
-                  <div className="text-[11px] text-neutral-700">
+                  <div className="text-xs text-neutral-850 font-medium">
                     {consignment.successiveCarrier.name ? (
                       <span>{consignment.successiveCarrier.name}, {consignment.successiveCarrier.cityPostal} {consignment.successiveCarrier.country}</span>
                     ) : (
-                      <span className="text-neutral-400 italic">None / Néant</span>
+                      <span className="text-neutral-500 italic">None / Néant</span>
                     )}
                   </div>
                 </div>
 
                 <div
                   onClick={() => onEditBox?.(18)}
-                  className="p-2 hover:bg-neutral-50/80 cursor-pointer transition-colors flex-1"
+                  className="p-2.5 hover:bg-neutral-50/80 cursor-pointer transition-colors flex-1"
                 >
-                  <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                    <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                      18 Réserves et observations <span className="text-neutral-500 font-medium">/ Carrier reservations</span>
+                  <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                    <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                      18 Réserves et observations <span className="text-neutral-600 font-medium">/ Carrier reservations</span>
                     </div>
                   </div>
-                  <div className="text-[11px] text-neutral-700 leading-snug">
-                    {consignment.carrierReservations || <span className="text-neutral-400 italic">No reservations / Apparent good condition</span>}
+                  <div className="text-xs text-neutral-850 leading-snug font-medium">
+                    {consignment.carrierReservations || <span className="text-neutral-500 italic">No reservations / Apparent good condition</span>}
                   </div>
                 </div>
               </div>
@@ -263,28 +263,28 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
             <div className="grid grid-cols-2 border-b border-neutral-400">
               <div
                 onClick={() => onEditBox?.(3)}
-                className="p-2 border-r border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors"
+                className="p-2.5 border-r border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors"
               >
-                <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                  <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                    3 Lieu prévu pour la livraison <span className="text-neutral-500 font-medium">/ Place of delivery</span>
+                <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                  <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                    3 Lieu prévu pour la livraison <span className="text-neutral-600 font-medium">/ Place of delivery</span>
                   </div>
                 </div>
-                <div className="text-[11px] font-medium text-neutral-900">
+                <div className="text-xs font-bold text-neutral-950">
                   {consignment.deliveryPlace || '—'}, {consignment.deliveryCountry || '—'}
                 </div>
               </div>
 
               <div
                 onClick={() => onEditBox?.(4)}
-                className="p-2 hover:bg-neutral-50/80 cursor-pointer transition-colors"
+                className="p-2.5 hover:bg-neutral-50/80 cursor-pointer transition-colors"
               >
-                <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                  <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                    4 Lieu et date de prise en charge <span className="text-neutral-500 font-medium">/ Place & date of taking over</span>
+                <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                  <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                    4 Lieu et date de prise en charge <span className="text-neutral-600 font-medium">/ Place & date of taking over</span>
                   </div>
                 </div>
-                <div className="text-[11px] font-medium text-neutral-900">
+                <div className="text-xs font-bold text-neutral-950">
                   {consignment.takingOverPlace || '—'} ({consignment.takingOverCountry || '—'}) — <span className="font-mono">{consignment.takingOverDate}</span>
                 </div>
               </div>
@@ -293,15 +293,15 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
             {/* Row 4: Box 5 (Documents attached) */}
             <div
               onClick={() => onEditBox?.(5)}
-              className="p-2 border-b border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors"
+              className="p-2.5 border-b border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors"
             >
-              <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                  5 Documents annexés <span className="text-neutral-500 font-medium">/ Documents attached</span>
+              <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                  5 Documents annexés <span className="text-neutral-600 font-medium">/ Documents attached</span>
                 </div>
-                <span className="text-[8px] text-neutral-400">(Invoice, packing list, EUR.1, etc.)</span>
+                <span className="text-[9px] text-neutral-500 font-medium">(Invoice, packing list, EUR.1, etc.)</span>
               </div>
-              <div className="text-[11px] text-neutral-800">
+              <div className="text-xs text-neutral-900 font-medium">
                 {consignment.documentsAttached || <span className="text-neutral-400 italic">None</span>}
               </div>
             </div>
@@ -309,34 +309,34 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
             {/* GOODS TABLE (Boxes 6 to 12) */}
             <div className="border-b border-neutral-400">
               {/* Table Header */}
-              <div className="grid grid-cols-12 bg-neutral-100 border-b border-neutral-300 text-[8.5px] font-bold text-neutral-700 divide-x divide-neutral-300">
+              <div className="grid grid-cols-12 bg-neutral-100 border-b border-neutral-300 text-[10px] font-bold text-neutral-800 divide-x divide-neutral-300">
                 <div className="col-span-2 p-1.5">
                   <div>6 Marques & No</div>
-                  <div className="text-[7.5px] font-normal text-neutral-500">Marks & Nos</div>
+                  <div className="text-[8.5px] font-normal text-neutral-600">Marks & Nos</div>
                 </div>
                 <div className="col-span-1 p-1.5 text-center">
                   <div>7 Nb colis</div>
-                  <div className="text-[7.5px] font-normal text-neutral-500">No pkgs</div>
+                  <div className="text-[8.5px] font-normal text-neutral-600">No pkgs</div>
                 </div>
                 <div className="col-span-2 p-1.5">
                   <div>8 Mode embal.</div>
-                  <div className="text-[7.5px] font-normal text-neutral-500">Packing</div>
+                  <div className="text-[8.5px] font-normal text-neutral-600">Packing</div>
                 </div>
                 <div className="col-span-4 p-1.5">
                   <div>9 Nature de la marchandise / ADR</div>
-                  <div className="text-[7.5px] font-normal text-neutral-500">Nature of goods & ADR class</div>
+                  <div className="text-[8.5px] font-normal text-neutral-600">Nature of goods & ADR class</div>
                 </div>
                 <div className="col-span-1 p-1.5 text-center">
                   <div>10 No stat.</div>
-                  <div className="text-[7.5px] font-normal text-neutral-500">HS code</div>
+                  <div className="text-[8.5px] font-normal text-neutral-600">HS code</div>
                 </div>
                 <div className="col-span-1 p-1.5 text-right">
                   <div>11 Poids brut</div>
-                  <div className="text-[7.5px] font-normal text-neutral-500">Gross wt kg</div>
+                  <div className="text-[8.5px] font-normal text-neutral-600">Gross wt kg</div>
                 </div>
                 <div className="col-span-1 p-1.5 text-right">
                   <div>12 Volume</div>
-                  <div className="text-[7.5px] font-normal text-neutral-500">Vol m³</div>
+                  <div className="text-[8.5px] font-normal text-neutral-600">Vol m³</div>
                 </div>
               </div>
 
@@ -346,34 +346,34 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
                   <div
                     key={item.id || idx}
                     onClick={() => onEditBox?.(6)}
-                    className="grid grid-cols-12 text-[10px] divide-x divide-neutral-200 hover:bg-neutral-50/80 cursor-pointer transition-colors"
+                    className="grid grid-cols-12 text-xs divide-x divide-neutral-200 hover:bg-neutral-50/80 cursor-pointer transition-colors"
                   >
-                    <div className="col-span-2 p-1.5 font-mono text-[9.5px] text-neutral-700 truncate">
+                    <div className="col-span-2 p-1.5 font-mono text-[11px] text-neutral-800 truncate">
                       {item.marksAndNumbers || '—'}
                     </div>
-                    <div className="col-span-1 p-1.5 text-center font-mono font-medium">
+                    <div className="col-span-1 p-1.5 text-center font-mono font-bold text-neutral-900">
                       {item.packagesCount}
                     </div>
-                    <div className="col-span-2 p-1.5 text-neutral-700 truncate">
+                    <div className="col-span-2 p-1.5 text-neutral-800 truncate font-medium">
                       {item.packingMethod}
                     </div>
                     <div className="col-span-4 p-1.5">
-                      <div className="font-medium text-neutral-900 leading-tight">
+                      <div className="font-bold text-neutral-950 leading-tight">
                         {item.natureOfGoods || '—'}
                       </div>
                       {item.adrDetails && (
-                        <div className="mt-0.5 text-[8.5px] font-mono text-red-600 font-semibold">
+                        <div className="mt-0.5 text-[10px] font-mono text-red-600 font-bold">
                           ADR: {item.adrDetails}
                         </div>
                       )}
                     </div>
-                    <div className="col-span-1 p-1.5 text-center font-mono text-[9px] text-neutral-600">
+                    <div className="col-span-1 p-1.5 text-center font-mono text-[10.5px] text-neutral-700">
                       {item.statisticalNumber || '—'}
                     </div>
-                    <div className="col-span-1 p-1.5 text-right font-mono font-medium">
+                    <div className="col-span-1 p-1.5 text-right font-mono font-bold text-neutral-950">
                       {Number(item.grossWeightKg).toLocaleString(undefined, { minimumFractionDigits: 1 })}
                     </div>
-                    <div className="col-span-1 p-1.5 text-right font-mono text-neutral-600">
+                    <div className="col-span-1 p-1.5 text-right font-mono text-neutral-800">
                       {item.volumeM3 ? item.volumeM3.toFixed(2) : '—'}
                     </div>
                   </div>
@@ -381,17 +381,17 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
               </div>
 
               {/* Totals Bar */}
-              <div className="grid grid-cols-12 bg-neutral-100/90 border-t border-neutral-300 p-1.5 text-[10px] font-bold text-neutral-900">
+              <div className="grid grid-cols-12 bg-neutral-100/90 border-t border-neutral-300 p-2 text-xs font-bold text-neutral-950">
                 <div className="col-span-2 uppercase tracking-wide">
                   TOTAL / TOTALS:
                 </div>
                 <div className="col-span-1 text-center font-mono" style={{ color: meta.accentHex }}>
                   {totalPackages}
                 </div>
-                <div className="col-span-2 text-neutral-500 font-normal">
+                <div className="col-span-2 text-neutral-600 font-medium">
                   packages
                 </div>
-                <div className="col-span-4 text-neutral-500 font-normal">
+                <div className="col-span-4 text-neutral-600 font-medium">
                   Gross goods weight & cubage:
                 </div>
                 <div className="col-span-1 text-center font-mono text-neutral-500">
@@ -413,14 +413,14 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
                 {/* Box 13: Sender instructions */}
                 <div
                   onClick={() => onEditBox?.(13)}
-                  className="p-2 border-b border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors flex-1"
+                  className="p-2.5 border-b border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors flex-1"
                 >
-                  <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                    <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                      13 Instructions de l'expéditeur <span className="text-neutral-500 font-medium">/ Sender's instructions</span>
+                  <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                    <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                      13 Instructions de l'expéditeur <span className="text-neutral-600 font-medium">/ Sender's instructions</span>
                     </div>
                   </div>
-                  <div className="text-[10px] text-neutral-700 whitespace-pre-wrap leading-tight">
+                  <div className="text-xs text-neutral-800 whitespace-pre-wrap leading-snug">
                     {consignment.senderInstructions || <span className="text-neutral-400 italic">None / Standard rules</span>}
                   </div>
                 </div>
@@ -429,28 +429,28 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
                 <div className="grid grid-cols-2 divide-x divide-neutral-400">
                   <div
                     onClick={() => onEditBox?.(14)}
-                    className="p-2 hover:bg-neutral-50/80 cursor-pointer transition-colors"
+                    className="p-2.5 hover:bg-neutral-50/80 cursor-pointer transition-colors"
                   >
-                    <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                      <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                        14 Remboursement <span className="text-neutral-500 font-medium">/ COD</span>
+                    <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                      <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                        14 Remboursement <span className="text-neutral-600 font-medium">/ COD</span>
                       </div>
                     </div>
-                    <div className="text-xs font-mono font-bold text-neutral-900 mt-0.5">
+                    <div className="text-sm font-mono font-bold text-neutral-950 mt-0.5">
                       {consignment.codAmount ? `${consignment.codAmount} ${consignment.charges.currency}` : 'NIL / NÉANT'}
                     </div>
                   </div>
 
                   <div
                     onClick={() => onEditBox?.(15)}
-                    className="p-2 hover:bg-neutral-50/80 cursor-pointer transition-colors"
+                    className="p-2.5 hover:bg-neutral-50/80 cursor-pointer transition-colors"
                   >
-                    <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                      <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                        15 Paiement transport <span className="text-neutral-500 font-medium">/ Carriage</span>
+                    <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                      <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                        15 Paiement transport <span className="text-neutral-600 font-medium">/ Carriage</span>
                       </div>
                     </div>
-                    <div className="text-[11px] font-medium text-neutral-900 mt-0.5">
+                    <div className="text-xs font-semibold text-neutral-900 mt-0.5">
                       {consignment.paymentInstructions || 'Carriage Paid'}
                     </div>
                   </div>
@@ -462,14 +462,14 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
                 {/* Box 19: Special agreements */}
                 <div
                   onClick={() => onEditBox?.(19)}
-                  className="p-2 border-b border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors"
+                  className="p-2.5 border-b border-neutral-400 hover:bg-neutral-50/80 cursor-pointer transition-colors"
                 >
-                  <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                    <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                      19 Conventions particulières <span className="text-neutral-500 font-medium">/ Special agreements</span>
+                  <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                    <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                      19 Conventions particulières <span className="text-neutral-600 font-medium">/ Special agreements</span>
                     </div>
                   </div>
-                  <div className="text-[10px] text-neutral-700 leading-snug">
+                  <div className="text-xs text-neutral-800 leading-snug">
                     {consignment.specialAgreements || 'CMR Convention 1956 applies.'}
                   </div>
                 </div>
@@ -477,23 +477,23 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
                 {/* Box 20: To be paid by */}
                 <div
                   onClick={() => onEditBox?.(20)}
-                  className="p-2 hover:bg-neutral-50/80 cursor-pointer transition-colors flex-1"
+                  className="p-2.5 hover:bg-neutral-50/80 cursor-pointer transition-colors flex-1"
                 >
-                  <div className="flex items-baseline justify-between border-b border-neutral-200/80 pb-0.5 mb-1">
-                    <div className="text-[9px] font-bold text-neutral-800 uppercase tracking-tight">
-                      20 À payer par <span className="text-neutral-500 font-medium">/ To be paid by</span>
+                  <div className="flex items-baseline justify-between border-b border-neutral-300 pb-0.5 mb-1">
+                    <div className="text-[10.5px] font-bold text-neutral-900 uppercase tracking-tight">
+                      20 À payer par <span className="text-neutral-600 font-medium">/ To be paid by</span>
                     </div>
-                    <span className="font-mono text-[8.5px] text-neutral-500">Currency: {consignment.charges.currency}</span>
+                    <span className="font-mono text-[9.5px] text-neutral-600 font-medium">Currency: {consignment.charges.currency}</span>
                   </div>
 
-                  <div className="mt-1 space-y-0.5 text-[9.5px]">
-                    <div className="flex justify-between text-neutral-600">
+                  <div className="mt-1 space-y-0.5 text-[11px]">
+                    <div className="flex justify-between text-neutral-700">
                       <span>Prix transport (Carriage):</span>
-                      <span className="font-mono">{consignment.charges.carriagePaid.toFixed(2)}</span>
+                      <span className="font-mono font-semibold">{consignment.charges.carriagePaid.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between font-bold pt-1 border-t border-neutral-200" style={{ color: meta.accentHex }}>
                       <span>Solde / Balance:</span>
-                      <span className="font-mono">{consignment.charges.balanceSender.toFixed(2)} {consignment.charges.currency}</span>
+                      <span className="font-mono font-bold">{consignment.charges.balanceSender.toFixed(2)} {consignment.charges.currency}</span>
                     </div>
                   </div>
                 </div>
@@ -505,10 +505,10 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
               onClick={() => onEditBox?.(21)}
               className="p-2 border-b border-neutral-400 bg-neutral-50/60 hover:bg-neutral-50 cursor-pointer transition-colors flex items-center justify-between shrink-0"
             >
-              <div className="text-[9px] font-bold text-neutral-800">
-                21 Établi à / le <span className="font-normal text-neutral-500">/ Established in / on</span>
+              <div className="text-[10.5px] font-bold text-neutral-900">
+                21 Établi à / le <span className="font-normal text-neutral-600">/ Established in / on</span>
               </div>
-              <div className="text-[11px] font-medium text-neutral-900 font-mono">
+              <div className="text-xs font-semibold text-neutral-950 font-mono">
                 Place: <span className="font-bold">{consignment.establishedPlace || '—'}</span> &nbsp;|&nbsp; Date: <span className="font-bold">{consignment.establishedDate}</span>
               </div>
             </div>
@@ -522,11 +522,11 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-bold text-neutral-900">22 Signature expéditeur</span>
+                    <span className="text-[10.5px] font-bold text-neutral-900">22 Signature expéditeur</span>
                     <PenTool className="h-3 w-3 text-neutral-400 group-hover:text-violet-600 transition-colors" />
                   </div>
-                  <div className="text-[7.5px] text-neutral-500">Signature and stamp of sender</div>
-                  <div className="text-[8px] text-neutral-400 font-mono truncate">
+                  <div className="text-[9px] text-neutral-600 font-medium">Signature & stamp of sender</div>
+                  <div className="text-[9.5px] text-neutral-600 font-mono truncate">
                     Date: {consignment.signatures.senderSignedAt || consignment.takingOverDate || '____ / ____ / 2026'}
                   </div>
                 </div>
@@ -539,7 +539,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
                       className="max-h-9 max-w-[130px] object-contain"
                     />
                   ) : (
-                    <div className="text-[8px] text-neutral-400 text-center font-medium">
+                    <div className="text-[9px] text-neutral-500 text-center font-medium">
                       Click to Sign (Box 22)
                     </div>
                   )}
@@ -547,7 +547,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
 
                 <div className="pt-0.5">
                   <div className="border-b border-neutral-400 w-full mb-0.5" />
-                  <div className="text-[8.5px] font-semibold text-neutral-800 truncate">
+                  <div className="text-[10px] font-bold text-neutral-900 truncate">
                     Signer: {consignment.signatures.senderSignerName || '(Authorized Signature)'}
                   </div>
                 </div>
@@ -560,11 +560,11 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-bold text-neutral-900">23 Signature transporteur</span>
+                    <span className="text-[10.5px] font-bold text-neutral-900">23 Signature transporteur</span>
                     <PenTool className="h-3 w-3 text-neutral-400 group-hover:text-violet-600 transition-colors" />
                   </div>
-                  <div className="text-[7.5px] text-neutral-500">Signature and stamp of carrier</div>
-                  <div className="text-[8px] text-neutral-400 font-mono truncate">
+                  <div className="text-[9px] text-neutral-600 font-medium">Signature & stamp of carrier</div>
+                  <div className="text-[9.5px] text-neutral-600 font-mono truncate">
                     Prise en charge: {consignment.signatures.carrierSignedAt || consignment.takingOverDate || '____ / ____ / 2026'}
                   </div>
                 </div>
@@ -577,7 +577,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
                       className="max-h-9 max-w-[130px] object-contain"
                     />
                   ) : (
-                    <div className="text-[8px] text-neutral-400 text-center font-medium">
+                    <div className="text-[9px] text-neutral-500 text-center font-medium">
                       Driver Sign (Box 23)
                     </div>
                   )}
@@ -585,7 +585,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
 
                 <div className="pt-0.5">
                   <div className="border-b border-neutral-400 w-full mb-0.5" />
-                  <div className="text-[8.5px] font-semibold text-neutral-800 truncate">
+                  <div className="text-[10px] font-bold text-neutral-900 truncate">
                     Driver: {consignment.signatures.carrierDriverName || '(Driver Signature)'}
                   </div>
                 </div>
@@ -598,11 +598,11 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
               >
                 <div>
                   <div className="flex items-center justify-between">
-                    <span className="text-[9px] font-bold text-neutral-900">24 Marchandises reçues</span>
+                    <span className="text-[10.5px] font-bold text-neutral-900">24 Marchandises reçues</span>
                     <PenTool className="h-3 w-3 text-neutral-400 group-hover:text-violet-600 transition-colors" />
                   </div>
-                  <div className="text-[7.5px] text-neutral-500">Goods received / Consignee signature</div>
-                  <div className="text-[8px] text-neutral-400 font-mono truncate">
+                  <div className="text-[9px] text-neutral-600 font-medium">Goods received / Consignee signature</div>
+                  <div className="text-[9.5px] text-neutral-600 font-mono truncate">
                     Date arrival: {consignment.signatures.goodsReceivedDate || '____ / ____ / 2026'}
                   </div>
                 </div>
@@ -615,7 +615,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
                       className="max-h-9 max-w-[130px] object-contain"
                     />
                   ) : (
-                    <div className="text-[8px] text-neutral-400 text-center font-medium">
+                    <div className="text-[9px] text-neutral-500 text-center font-medium">
                       Receipt Sign (Box 24)
                     </div>
                   )}
@@ -623,7 +623,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
 
                 <div className="pt-0.5">
                   <div className="border-b border-neutral-400 w-full mb-0.5" />
-                  <div className="text-[8.5px] font-semibold text-neutral-800 truncate">
+                  <div className="text-[10px] font-bold text-neutral-900 truncate">
                     Receiver: {consignment.signatures.consigneeReceiverName || '(Consignee Signature)'}
                   </div>
                 </div>
@@ -631,7 +631,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
             </div>
 
             {/* Official Bottom Footer Note */}
-            <div className="p-2 bg-neutral-50 text-[8px] text-neutral-500 flex items-center justify-between shrink-0">
+            <div className="p-2 bg-neutral-50 text-[9.5px] text-neutral-600 flex items-center justify-between shrink-0 font-medium">
               <span>UN Geneva Convention on the Contract for the International Carriage of Goods by Road (CMR 1956)</span>
               <span className="font-mono">Page 1 / {meta.name}</span>
             </div>

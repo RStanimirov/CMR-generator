@@ -37,7 +37,7 @@ export const Header: React.FC<HeaderProps> = ({
         <span className="flex h-7 w-7 items-center justify-center rounded-md bg-neutral-900 text-xs font-mono font-bold text-white shadow-xs">
           CMR
         </span>
-        <span>CMR Waybill Pro</span>
+        <span>CMR Generator</span>
       </a>
 
       {/* Zone 2: 4-5 Concise Single-Line Nav Links */}

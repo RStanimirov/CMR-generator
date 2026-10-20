@@ -1,7 +1,5 @@
 """
 CMR Document Models and Data Schema
-Conforms to the UN Geneva Convention on the Contract for the
-International Carriage of Goods by Road (CMR), 1956.
 """
 
 from dataclasses import dataclass, field, asdict

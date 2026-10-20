@@ -67,11 +67,11 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   // Title left
   doc.setTextColor(20, 20, 20);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(8.5);
+  doc.setFontSize(9.5);
   doc.text('INTERNATIONAL CONSIGNMENT NOTE / LETTRE DE VOITURE INTERNATIONALE', marginX + 3, headerY + 4.5);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(5.5);
-  doc.setTextColor(90, 90, 90);
+  doc.setFontSize(6.5);
+  doc.setTextColor(60, 60, 60);
   doc.text('Ce transport est soumis, nonobstant toute clause contraire, à la Convention de Genève (CMR 1956).', marginX + 3, headerY + 8);
   doc.text('This carriage is subject, notwithstanding any clause to the contrary, to the Convention on Contract for Intl Carriage of Goods by Road.', marginX + 3, headerY + 11.5);
 
@@ -84,15 +84,15 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   doc.setTextColor(accentR, accentG, accentB);
   doc.text('CMR', emblemX + 3, headerY + 7);
 
-  doc.setFontSize(7);
-  doc.setTextColor(60, 60, 60);
+  doc.setFontSize(8);
+  doc.setTextColor(40, 40, 40);
   doc.text('No.', emblemX + 22, headerY + 5);
-  doc.setFontSize(9.5);
+  doc.setFontSize(11);
   doc.setTextColor(accentR, accentG, accentB);
-  doc.text(c.consignmentNumber, emblemX + 27, headerY + 5.5);
+  doc.text(c.consignmentNumber, emblemX + 28, headerY + 5.5);
 
-  doc.setFontSize(6.5);
-  doc.setTextColor(100, 100, 100);
+  doc.setFontSize(7.5);
+  doc.setTextColor(60, 60, 60);
   doc.setFont('helvetica', 'normal');
   doc.text(`Issue Date: ${c.issueDate}`, emblemX + 22, headerY + 11);
 
@@ -108,7 +108,7 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   drawBoxHeader(doc, midX, sectionTopY, '16', 'Transporteur (nom, adresse, pays)', 'Carrier (name, address, country)', colHalfW);
   renderPartyText(doc, midX + 2, sectionTopY, c.carrier);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
+  doc.setFontSize(7.5);
   doc.setTextColor(accentR, accentG, accentB);
   doc.text(`Tractor / Camion: ${c.carrierTruckPlate || '-'}   Trailer / Remorque: ${c.carrierTrailerPlate || '-'}`, midX + 2, sectionTopY + row1H - 1.8);
 
@@ -125,22 +125,22 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   const halfRightH = row2H / 2;
   drawBoxHeader(doc, midX, row2Y, '17', 'Transporteurs successifs', 'Successive carriers', colHalfW);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(6.5);
-  doc.setTextColor(30, 30, 30);
+  doc.setFontSize(7.5);
+  doc.setTextColor(20, 20, 20);
   if (c.successiveCarrier.name) {
-    doc.text(`${c.successiveCarrier.name}, ${c.successiveCarrier.cityPostal} ${c.successiveCarrier.country}`, midX + 2, row2Y + 8.5);
+    doc.text(`${c.successiveCarrier.name}, ${c.successiveCarrier.cityPostal} ${c.successiveCarrier.country}`, midX + 2, row2Y + 9.8);
   } else {
-    doc.setTextColor(140, 140, 140);
-    doc.text('None / Néant', midX + 2, row2Y + 8.5);
+    doc.setTextColor(110, 110, 110);
+    doc.text('None / Néant', midX + 2, row2Y + 9.8);
   }
 
   doc.line(midX, row2Y + halfRightH, marginX + pageWidth, row2Y + halfRightH);
 
   drawBoxHeader(doc, midX, row2Y + halfRightH, '18', 'Réserves et observations du transporteur', "Carrier's reservations", colHalfW);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(6.5);
-  doc.setTextColor(30, 30, 30);
-  doc.text((c.carrierReservations || 'None / Received in apparent good order and condition').substring(0, 75), midX + 2, row2Y + halfRightH + 8.5);
+  doc.setFontSize(7.5);
+  doc.setTextColor(20, 20, 20);
+  doc.text((c.carrierReservations || 'None / Received in apparent good order and condition').substring(0, 70), midX + 2, row2Y + halfRightH + 9.8);
 
   doc.line(marginX, row2Y + row2H, marginX + pageWidth, row2Y + row2H);
   doc.line(midX, row2Y, midX, row2Y + row2H);
@@ -149,13 +149,13 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   const row3Y = row2Y + row2H;
   const row3H = 12;
   drawBoxHeader(doc, marginX, row3Y, '3', 'Lieu prévu pour la livraison', 'Place of delivery of the goods', colHalfW);
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7);
-  doc.setTextColor(20, 20, 20);
-  doc.text(`${c.deliveryPlace || '-'}, ${c.deliveryCountry || '-'}`, marginX + 2, row3Y + 8.5);
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.2);
+  doc.setTextColor(15, 15, 15);
+  doc.text(`${c.deliveryPlace || '-'}, ${c.deliveryCountry || '-'}`, marginX + 2, row3Y + 9.6);
 
   drawBoxHeader(doc, midX, row3Y, '4', 'Lieu et date de la prise en charge', 'Place & date of taking over', colHalfW);
-  doc.text(`${c.takingOverPlace || '-'} (${c.takingOverCountry || '-'})  -  Date: ${c.takingOverDate || '-'}`, midX + 2, row3Y + 8.5);
+  doc.text(`${c.takingOverPlace || '-'} (${c.takingOverCountry || '-'})  -  Date: ${c.takingOverDate || '-'}`, midX + 2, row3Y + 9.6);
 
   doc.line(marginX, row3Y + row3H, marginX + pageWidth, row3Y + row3H);
   doc.line(midX, row3Y, midX, row3Y + row3H);
@@ -165,19 +165,19 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   const row5H = 10;
   drawBoxHeader(doc, marginX, row5Y, '5', 'Documents annexés (Factures, listes de colisage, certificats)', 'Documents attached', pageWidth);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(6.5);
-  doc.setTextColor(30, 30, 30);
-  doc.text((c.documentsAttached || 'None').substring(0, 140), marginX + 2, row5Y + 8.2);
+  doc.setFontSize(7.5);
+  doc.setTextColor(20, 20, 20);
+  doc.text((c.documentsAttached || 'None').substring(0, 130), marginX + 2, row5Y + 8.8);
   doc.line(marginX, row5Y + row5H, marginX + pageWidth, row5Y + row5H);
 
   // GOODS TABLE (Boxes 6 to 12)
   const goodsTopY = row5Y + row5H;
-  const goodsHeaderH = 8;
-  const goodsBodyH = 76; // Expanded by 30mm (3 cm) so signature boxes 22-24 move down to the bottom
+  const goodsHeaderH = 8.5;
+  const goodsBodyH = 75.5; // Optimized to keep signature boxes 22-24 compact at bottom
   const goodsTotalH = 7;
 
   // Table header background
-  doc.setFillColor(245, 246, 248);
+  doc.setFillColor(242, 244, 247);
   doc.rect(marginX, goodsTopY, pageWidth, goodsHeaderH, 'F');
   doc.line(marginX, goodsTopY + goodsHeaderH, marginX + pageWidth, goodsTopY + goodsHeaderH);
 
@@ -198,8 +198,8 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
 
   // Column headers
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(5.5);
-  doc.setTextColor(40, 40, 40);
+  doc.setFontSize(6.5);
+  doc.setTextColor(30, 30, 30);
 
   const headers = [
     { no: '6', fr: 'Marques et No', en: 'Marks & Nos' },
@@ -212,40 +212,46 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   ];
 
   headers.forEach((h, i) => {
-    doc.text(`${h.no} ${h.fr}`, colX[i] + 1.5, goodsTopY + 3.2);
+    doc.text(`${h.no} ${h.fr}`, colX[i] + 1.5, goodsTopY + 3.4);
     doc.setFont('helvetica', 'normal');
-    doc.text(h.en, colX[i] + 1.5, goodsTopY + 6.2);
+    doc.setFontSize(5.5);
+    doc.setTextColor(70, 70, 70);
+    doc.text(h.en, colX[i] + 1.5, goodsTopY + 6.6);
     doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(30, 30, 30);
   });
 
   // Table items rows
-  let rowY = goodsTopY + goodsHeaderH + 4.5;
+  let rowY = goodsTopY + goodsHeaderH + 5.0;
   c.items.slice(0, 6).forEach((item) => {
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(6.5);
-    doc.setTextColor(20, 20, 20);
+    doc.setFontSize(7.8);
+    doc.setTextColor(15, 15, 15);
 
     doc.text(item.marksAndNumbers.substring(0, 16), colX[0] + 1.5, rowY);
     doc.text(String(item.packagesCount), colX[1] + 2, rowY);
     doc.text(item.packingMethod.substring(0, 15), colX[2] + 1.5, rowY);
 
     doc.setFont('helvetica', 'bold');
-    doc.text(item.natureOfGoods.substring(0, 48), colX[3] + 1.5, rowY);
+    doc.setFontSize(8.2);
+    doc.text(item.natureOfGoods.substring(0, 46), colX[3] + 1.5, rowY);
     if (item.adrDetails) {
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(5.5);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(6.8);
       doc.setTextColor(accentR, accentG, accentB);
-      doc.text(`ADR: ${item.adrDetails.substring(0, 50)}`, colX[3] + 1.5, rowY + 3.2);
-      doc.setTextColor(20, 20, 20);
-      doc.setFontSize(6.5);
+      doc.text(`ADR: ${item.adrDetails.substring(0, 48)}`, colX[3] + 1.5, rowY + 3.6);
+      doc.setTextColor(15, 15, 15);
+      doc.setFontSize(7.8);
     }
 
     doc.setFont('helvetica', 'normal');
     doc.text(item.statisticalNumber || '-', colX[4] + 1.5, rowY);
+    doc.setFont('helvetica', 'bold');
     doc.text(item.grossWeightKg.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 }), colX[5] + 2, rowY);
     doc.text(item.volumeM3 ? item.volumeM3.toFixed(2) : '-', colX[6] + 2, rowY);
 
-    rowY += 9.5;
+    rowY += 9.6;
   });
 
   // Table bottom line
@@ -257,16 +263,16 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   const totalWt = c.items.reduce((s, it) => s + (Number(it.grossWeightKg) || 0), 0);
   const totalVol = c.items.reduce((s, it) => s + (Number(it.volumeM3) || 0), 0);
 
-  doc.setFillColor(238, 242, 246);
+  doc.setFillColor(235, 239, 245);
   doc.rect(marginX, tableBottomY, pageWidth, goodsTotalH, 'F');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
-  doc.setTextColor(20, 20, 20);
-  doc.text('TOTAL / TOTALS:', colX[0] + 1.5, tableBottomY + 4.5);
+  doc.setFontSize(8.0);
+  doc.setTextColor(15, 15, 15);
+  doc.text('TOTAL / TOTALS:', colX[0] + 1.5, tableBottomY + 4.8);
   doc.setTextColor(accentR, accentG, accentB);
-  doc.text(`${totalPkgs} pkgs`, colX[1] + 2, tableBottomY + 4.5);
-  doc.text(`${totalWt.toLocaleString(undefined, { minimumFractionDigits: 1 })} kg`, colX[5] + 2, tableBottomY + 4.5);
-  doc.text(`${totalVol.toFixed(2)} m³`, colX[6] + 2, tableBottomY + 4.5);
+  doc.text(`${totalPkgs} pkgs`, colX[1] + 2, tableBottomY + 4.8);
+  doc.text(`${totalWt.toLocaleString(undefined, { minimumFractionDigits: 1 })} kg`, colX[5] + 2, tableBottomY + 4.8);
+  doc.text(`${totalVol.toFixed(2)} m³`, colX[6] + 2, tableBottomY + 4.8);
   doc.line(marginX, tableBottomY + goodsTotalH, marginX + pageWidth, tableBottomY + goodsTotalH);
 
   // LOWER SECTION (Boxes 13, 14, 15, 19, 20)
@@ -281,10 +287,10 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   // Box 13: Sender instructions
   drawBoxHeader(doc, marginX, lowerTopY, '13', "Instructions de l'expéditeur", "Sender's instructions", 105);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(6.5);
-  doc.setTextColor(30, 30, 30);
+  doc.setFontSize(7.5);
+  doc.setTextColor(20, 20, 20);
   const insLines = doc.splitTextToSize(c.senderInstructions || 'None', 100);
-  doc.text(insLines.slice(0, 3), marginX + 2, lowerTopY + 8.5);
+  doc.text(insLines.slice(0, 3), marginX + 2, lowerTopY + 9.8);
 
   // Boxes 14 (COD) & 15 (Carriage paid) at bottom of left half
   const b14Y = lowerTopY + 22;
@@ -295,21 +301,23 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
 
   drawBoxHeader(doc, marginX, b14Y, '14', 'Prescriptions de remboursement', 'Cash on delivery', 52);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
-  doc.text(c.codAmount ? `${c.codAmount} ${c.charges.currency}` : 'NIL / NÉANT', marginX + 2, b14Y + 8.5);
+  doc.setFontSize(8.5);
+  doc.setTextColor(20, 20, 20);
+  doc.text(c.codAmount ? `${c.codAmount} ${c.charges.currency}` : 'NIL / NÉANT', marginX + 2, b14Y + 9.8);
 
   drawBoxHeader(doc, b15X, b14Y, '15', 'Dispositions paiement transport', 'Carriage payment instructions', 53);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(7);
-  doc.text(c.paymentInstructions || 'Carriage Paid (Franco)', b15X + 2, b14Y + 8.5);
+  doc.setFontSize(8.0);
+  doc.setTextColor(20, 20, 20);
+  doc.text(c.paymentInstructions || 'Carriage Paid (Franco)', b15X + 2, b14Y + 9.8);
 
   // Box 19 (Conventions particulières) & Box 20 (Charges breakdown) right
   const b19H = 14;
   drawBoxHeader(doc, lowerMidX, lowerTopY, '19', 'Conventions particulières', 'Special agreements', pageWidth - 105);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(6.5);
-  doc.setTextColor(30, 30, 30);
-  doc.text((c.specialAgreements || 'CMR Convention 1956 applies.').substring(0, 58), lowerMidX + 2, lowerTopY + 8.5);
+  doc.setFontSize(7.5);
+  doc.setTextColor(20, 20, 20);
+  doc.text((c.specialAgreements || 'CMR Convention 1956 applies.').substring(0, 58), lowerMidX + 2, lowerTopY + 9.8);
 
   doc.line(lowerMidX, lowerTopY + b19H, marginX + pageWidth, lowerTopY + b19H);
 
@@ -317,23 +325,25 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   const b20Y = lowerTopY + b19H;
   drawBoxHeader(doc, lowerMidX, b20Y, '20', 'À payer par (Prix de transport)', `To be paid by (${c.charges.currency})`, pageWidth - 105);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(6.5);
-  doc.text(`Prix de transport / Carriage: ${c.charges.carriagePaid.toFixed(2)} ${c.charges.currency}`, lowerMidX + 2, b20Y + 8.2);
-  doc.text(`Solde / Balance:           ${c.charges.balanceSender.toFixed(2)} ${c.charges.currency}`, lowerMidX + 2, b20Y + 12.5);
+  doc.setFontSize(7.5);
+  doc.setTextColor(20, 20, 20);
+  doc.text(`Prix de transport / Carriage: ${c.charges.carriagePaid.toFixed(2)} ${c.charges.currency}`, lowerMidX + 2, b20Y + 9.2);
+  doc.text(`Solde / Balance:           ${c.charges.balanceSender.toFixed(2)} ${c.charges.currency}`, lowerMidX + 2, b20Y + 13.0);
   doc.setFont('helvetica', 'bold');
+  doc.setFontSize(8.5);
   doc.setTextColor(accentR, accentG, accentB);
-  doc.text(`Total: ${c.charges.carriagePaid.toFixed(2)} ${c.charges.currency}`, lowerMidX + 55, b20Y + 12.5);
+  doc.text(`Total: ${c.charges.carriagePaid.toFixed(2)} ${c.charges.currency}`, lowerMidX + 50, b20Y + 13.0);
 
   // BOX 21 (Established Place & Date)
   const b21Y = lowerTopY + lowerH;
   const b21H = 8;
-  doc.setFillColor(250, 250, 250);
+  doc.setFillColor(248, 249, 250);
   doc.rect(marginX, b21Y, pageWidth, b21H, 'F');
   drawBoxHeader(doc, marginX, b21Y, '21', 'Établi à / le', 'Established in / on');
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
+  doc.setFontSize(8.5);
   doc.setTextColor(20, 20, 20);
-  doc.text(`Place / Lieu: ${c.establishedPlace || '-'}        Date: ${c.establishedDate || '-'}`, marginX + 45, b21Y + 5);
+  doc.text(`Place / Lieu: ${c.establishedPlace || '-'}        Date: ${c.establishedDate || '-'}`, marginX + 45, b21Y + 5.2);
   doc.line(marginX, b21Y + b21H, marginX + pageWidth, b21Y + b21H);
 
   // SIGNATURES ROW (Boxes 22, 23, 24: 3 equal columns of ~64.6mm) - Evenly Aligned to Bottom
@@ -350,13 +360,13 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   // Box 22: Sender Signature
   drawBoxHeader(doc, marginX, sigY, '22', "Signature et timbre de l'expéditeur", 'Signature & stamp of sender');
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(5.5);
-  doc.setTextColor(110, 110, 110);
-  doc.text(`Date: ${c.signatures.senderSignedAt || c.takingOverDate || '____ / ____ / 2026'}`, marginX + 2, sigY + 8.5);
+  doc.setFontSize(6.5);
+  doc.setTextColor(80, 80, 80);
+  doc.text(`Date: ${c.signatures.senderSignedAt || c.takingOverDate || '____ / ____ / 2026'}`, marginX + 2, sigY + 9.8);
 
   if (c.signatures.senderSignatureDataUrl) {
     try {
-      doc.addImage(c.signatures.senderSignatureDataUrl, 'PNG', marginX + 6, sigY + 11, 48, sigH - 25);
+      doc.addImage(c.signatures.senderSignatureDataUrl, 'PNG', marginX + 6, sigY + 11.5, 48, sigH - 24);
     } catch {
       // fallback
     }
@@ -366,21 +376,21 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   doc.setDrawColor(180, 180, 180);
   doc.line(marginX + 2, sigY + sigH - 6.5, marginX + colSigW - 2, sigY + sigH - 6.5);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
-  doc.setTextColor(30, 30, 30);
-  doc.text(`Signer: ${c.signatures.senderSignerName || '(Authorized Signature)'}`, marginX + 2, sigY + sigH - 2.5);
+  doc.setFontSize(7.8);
+  doc.setTextColor(20, 20, 20);
+  doc.text(`Signer: ${c.signatures.senderSignerName || '(Authorized Signature)'}`, marginX + 2, sigY + sigH - 2.2);
 
   // Box 23: Carrier Signature
   const sig23X = marginX + colSigW;
   drawBoxHeader(doc, sig23X, sigY, '23', 'Signature et timbre du transporteur', 'Signature & stamp of carrier');
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(5.5);
-  doc.setTextColor(110, 110, 110);
-  doc.text(`Prise en charge: ${c.signatures.carrierSignedAt || c.takingOverDate || '____ / ____ / 2026'}`, sig23X + 2, sigY + 8.5);
+  doc.setFontSize(6.5);
+  doc.setTextColor(80, 80, 80);
+  doc.text(`Prise en charge: ${c.signatures.carrierSignedAt || c.takingOverDate || '____ / ____ / 2026'}`, sig23X + 2, sigY + 9.8);
 
   if (c.signatures.carrierSignatureDataUrl) {
     try {
-      doc.addImage(c.signatures.carrierSignatureDataUrl, 'PNG', sig23X + 6, sigY + 11, 48, sigH - 25);
+      doc.addImage(c.signatures.carrierSignatureDataUrl, 'PNG', sig23X + 6, sigY + 11.5, 48, sigH - 24);
     } catch {
       // fallback
     }
@@ -389,21 +399,21 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   // Box 23 Baseline & Driver Name
   doc.line(sig23X + 2, sigY + sigH - 6.5, sig23X + colSigW - 2, sigY + sigH - 6.5);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
-  doc.setTextColor(30, 30, 30);
-  doc.text(`Driver: ${c.signatures.carrierDriverName || '(Driver Signature)'}`, sig23X + 2, sigY + sigH - 2.5);
+  doc.setFontSize(7.8);
+  doc.setTextColor(20, 20, 20);
+  doc.text(`Driver: ${c.signatures.carrierDriverName || '(Driver Signature)'}`, sig23X + 2, sigY + sigH - 2.2);
 
   // Box 24: Consignee Signature (Goods received)
   const sig24X = marginX + (2 * colSigW);
   drawBoxHeader(doc, sig24X, sigY, '24', 'Marchandises reçues (Destinataire)', 'Goods received (Consignee)');
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(5.5);
-  doc.setTextColor(110, 110, 110);
-  doc.text(`Date arrival: ${c.signatures.goodsReceivedDate || '____ / ____ / 2026'}`, sig24X + 2, sigY + 8.5);
+  doc.setFontSize(6.5);
+  doc.setTextColor(80, 80, 80);
+  doc.text(`Date arrival: ${c.signatures.goodsReceivedDate || '____ / ____ / 2026'}`, sig24X + 2, sigY + 9.8);
 
   if (c.signatures.consigneeSignatureDataUrl) {
     try {
-      doc.addImage(c.signatures.consigneeSignatureDataUrl, 'PNG', sig24X + 6, sigY + 11, 48, sigH - 25);
+      doc.addImage(c.signatures.consigneeSignatureDataUrl, 'PNG', sig24X + 6, sigY + 11.5, 48, sigH - 24);
     } catch {
       // fallback
     }
@@ -412,9 +422,9 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
   // Box 24 Baseline & Receiver Name
   doc.line(sig24X + 2, sigY + sigH - 6.5, marginX + pageWidth - 2, sigY + sigH - 6.5);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(6.5);
-  doc.setTextColor(30, 30, 30);
-  doc.text(`Receiver: ${c.signatures.consigneeReceiverName || '(Consignee Signature)'}`, sig24X + 2, sigY + sigH - 2.5);
+  doc.setFontSize(7.8);
+  doc.setTextColor(20, 20, 20);
+  doc.text(`Receiver: ${c.signatures.consigneeReceiverName || '(Consignee Signature)'}`, sig24X + 2, sigY + sigH - 2.2);
 
   // Horizontal line separating signature boxes from footer
   doc.setDrawColor(180, 180, 180);
@@ -422,55 +432,55 @@ function renderSingleCMRSheet(doc: jsPDF, c: CMRConsignment, copyKey: string) {
 
   // Footer notes flush at bottom
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(5);
-  doc.setTextColor(120, 120, 120);
+  doc.setFontSize(6.0);
+  doc.setTextColor(90, 90, 90);
   doc.text('Convention on the Contract for the International Carriage of Goods by Road (CMR Geneva 1956)', marginX + 2, bottomBorderY - 1.8);
-  doc.text(`Copy: ${meta.name} | Doc: ${c.consignmentNumber}`, marginX + pageWidth - 55, bottomBorderY - 1.8);
+  doc.text(`Copy: ${meta.name} | Doc: ${c.consignmentNumber}`, marginX + pageWidth - 58, bottomBorderY - 1.8);
 }
 
 function drawBoxHeader(doc: jsPDF, x: number, y: number, boxNo: string, frText: string, enText: string, w?: number) {
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(5.5);
-  doc.setTextColor(50, 50, 50);
-  doc.text(`${boxNo}  ${frText}`, x + 1.5, y + 2.5);
+  doc.setFontSize(6.8);
+  doc.setTextColor(25, 25, 25);
+  doc.text(`${boxNo}  ${frText}`, x + 1.5, y + 2.8);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(4.5);
-  doc.setTextColor(120, 120, 120);
-  doc.text(enText, x + 1.5, y + 4.5);
+  doc.setFontSize(5.5);
+  doc.setTextColor(80, 80, 80);
+  doc.text(enText, x + 1.5, y + 5.5);
 
   if (w && w > 0) {
-    doc.setDrawColor(230, 230, 230);
-    doc.setLineWidth(0.15);
-    doc.line(x + 1, y + 5.5, x + w - 1, y + 5.5);
+    doc.setDrawColor(215, 215, 215);
+    doc.setLineWidth(0.18);
+    doc.line(x + 1, y + 6.8, x + w - 1, y + 6.8);
   }
 }
 
 function renderPartyText(doc: jsPDF, x: number, y: number, party: { name: string; address: string; cityPostal: string; country: string; contactPhone?: string; vatId?: string }) {
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(7.5);
-  doc.setTextColor(15, 15, 15);
-  // User input text starts at y + 8.5, completely below header text and subtle divider line
-  doc.text(party.name || '-', x, y + 8.5);
+  doc.setFontSize(8.8);
+  doc.setTextColor(10, 10, 10);
+  // User input text starts at y + 10.0, completely below header text and subtle divider line
+  doc.text(party.name || '-', x, y + 10.0);
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(6.5);
-  doc.setTextColor(50, 50, 50);
-  let curY = y + 12.0;
+  doc.setFontSize(7.6);
+  doc.setTextColor(30, 30, 30);
+  let curY = y + 13.8;
   if (party.address) {
     doc.text(party.address, x, curY);
-    curY += 3.4;
+    curY += 3.6;
   }
   if (party.cityPostal || party.country) {
     doc.text(`${party.cityPostal} ${party.country.toUpperCase()}`, x, curY);
-    curY += 3.4;
+    curY += 3.6;
   }
   if (party.contactPhone || party.vatId) {
     const contactStr = [
       party.contactPhone ? `Tel: ${party.contactPhone}` : '',
       party.vatId ? `VAT: ${party.vatId}` : ''
     ].filter(Boolean).join(' | ');
-    doc.setFontSize(5.5);
-    doc.setTextColor(100, 100, 100);
+    doc.setFontSize(6.6);
+    doc.setTextColor(60, 60, 60);
     doc.text(contactStr, x, curY);
   }
 }

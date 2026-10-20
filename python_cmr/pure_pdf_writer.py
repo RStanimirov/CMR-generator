@@ -165,28 +165,32 @@ def render_cmr_page_stream(doc: CMRDocument, copy_key: str = "1") -> bytes:
     builder.line(mid_x, b1_top, mid_x, b1_bottom)
     
     # Box 1: Sender
-    builder.text(left + 4, b1_top - 8, "1  Expéditeur (nom, adresse, pays) / Sender (name, address, country)", font="F2", size=6.5, r=0.1, g=0.1, b=0.1)
-    builder.set_stroke_color(0.88, 0.88, 0.88)
+    builder.text(left + 4, b1_top - 8, "1  Expéditeur (nom, adresse, pays) / Sender (name, address, country)", font="F2", size=7.2, r=0.1, g=0.1, b=0.1)
+    builder.set_stroke_color(0.85, 0.85, 0.85)
     builder.line(left + 2, b1_top - 12, mid_x - 2, b1_top - 12)
     builder.set_stroke_color(0.7, 0.7, 0.7)
     lines_s = doc.sender.formatted_address().split("\n")
-    sy = b1_top - 20
-    for line in lines_s[:5]:
-        builder.text(left + 8, sy, line, font="F1", size=8.0, r=0.0, g=0.0, b=0.0)
+    sy = b1_top - 21
+    for idx, line in enumerate(lines_s[:5]):
+        f = "F2" if idx == 0 else "F1"
+        s = 9.2 if idx == 0 else 8.2
+        builder.text(left + 6, sy, line, font=f, size=s, r=0.0, g=0.0, b=0.0)
         sy -= 9.5
         
     # Box 16: Carrier
-    builder.text(mid_x + 4, b1_top - 8, "16  Transporteur (nom, adresse, pays) / Carrier (name, address, country)", font="F2", size=6.5, r=0.1, g=0.1, b=0.1)
-    builder.set_stroke_color(0.88, 0.88, 0.88)
+    builder.text(mid_x + 4, b1_top - 8, "16  Transporteur (nom, adresse, pays) / Carrier (name, address, country)", font="F2", size=7.2, r=0.1, g=0.1, b=0.1)
+    builder.set_stroke_color(0.85, 0.85, 0.85)
     builder.line(mid_x + 2, b1_top - 12, right - 2, b1_top - 12)
     builder.set_stroke_color(0.7, 0.7, 0.7)
     lines_c = doc.carrier.formatted_address().split("\n")
-    cy = b1_top - 20
-    for line in lines_c[:4]:
-        builder.text(mid_x + 8, cy, line, font="F1", size=8.0, r=0.0, g=0.0, b=0.0)
+    cy = b1_top - 21
+    for idx, line in enumerate(lines_c[:4]):
+        f = "F2" if idx == 0 else "F1"
+        s = 9.2 if idx == 0 else 8.2
+        builder.text(mid_x + 6, cy, line, font=f, size=s, r=0.0, g=0.0, b=0.0)
         cy -= 9.5
     plates = f"Truck: {doc.carrier_license_plate or '-'}  |  Trailer: {doc.carrier_trailer_plate or '-'}"
-    builder.text(mid_x + 8, b1_bottom + 5, plates, font="F2", size=7.5, r=cr, g=cg, b=cb)
+    builder.text(mid_x + 6, b1_bottom + 5, plates, font="F2", size=8.0, r=cr, g=cg, b=cb)
 
     # Row 2: Box 2 (Consignee, h=64) & Box 17 (Successive carriers, h=32) + Box 18 (Reservations, h=32)
     b2_top = b1_bottom
@@ -196,31 +200,33 @@ def render_cmr_page_stream(doc: CMRDocument, copy_key: str = "1") -> bytes:
     builder.line(mid_x, b2_top, mid_x, b2_bottom)
     
     # Box 2: Consignee
-    builder.text(left + 4, b2_top - 8, "2  Destinataire (nom, adresse, pays) / Consignee (name, address, country)", font="F2", size=6.5, r=0.1, g=0.1, b=0.1)
-    builder.set_stroke_color(0.88, 0.88, 0.88)
+    builder.text(left + 4, b2_top - 8, "2  Destinataire (nom, adresse, pays) / Consignee (name, address, country)", font="F2", size=7.2, r=0.1, g=0.1, b=0.1)
+    builder.set_stroke_color(0.85, 0.85, 0.85)
     builder.line(left + 2, b2_top - 12, mid_x - 2, b2_top - 12)
     builder.set_stroke_color(0.7, 0.7, 0.7)
     lines_d = doc.consignee.formatted_address().split("\n")
-    dy = b2_top - 20
-    for line in lines_d[:5]:
-        builder.text(left + 8, dy, line, font="F1", size=8.0, r=0.0, g=0.0, b=0.0)
+    dy = b2_top - 21
+    for idx, line in enumerate(lines_d[:5]):
+        f = "F2" if idx == 0 else "F1"
+        s = 9.2 if idx == 0 else 8.2
+        builder.text(left + 6, dy, line, font=f, size=s, r=0.0, g=0.0, b=0.0)
         dy -= 9.5
         
     # Box 17: Successive carrier (half height)
     b17_h = 32.0
     b17_bottom = b2_top - b17_h
     builder.line(mid_x, b17_bottom, right, b17_bottom)
-    builder.text(mid_x + 4, b2_top - 9, "17  Transporteurs successifs / Successive carriers", font="F2", size=6.5, r=0.1, g=0.1, b=0.1)
+    builder.text(mid_x + 4, b2_top - 9, "17  Transporteurs successifs / Successive carriers", font="F2", size=7.0, r=0.1, g=0.1, b=0.1)
     if doc.successive_carrier.name:
         sc_text = f"{doc.successive_carrier.name}, {doc.successive_carrier.city_postal} {doc.successive_carrier.country}"
-        builder.text(mid_x + 8, b2_top - 20, sc_text[:50], font="F1", size=7.5)
+        builder.text(mid_x + 6, b2_top - 20, sc_text[:50], font="F1", size=8.0)
     else:
-        builder.text(mid_x + 8, b2_top - 20, "None / Non applicable", font="F1", size=7.0, r=0.4, g=0.4, b=0.4)
+        builder.text(mid_x + 6, b2_top - 20, "None / Non applicable", font="F1", size=7.5, r=0.3, g=0.3, b=0.3)
         
     # Box 18: Carrier reservations
-    builder.text(mid_x + 4, b17_bottom - 9, "18  Réserves et observations du transporteur / Carrier's reservations", font="F2", size=6.5, r=0.1, g=0.1, b=0.1)
+    builder.text(mid_x + 4, b17_bottom - 9, "18  Réserves et observations du transporteur / Carrier's reservations", font="F2", size=7.0, r=0.1, g=0.1, b=0.1)
     res_text = doc.carrier_reservations or "None / Good order and condition"
-    builder.text(mid_x + 8, b17_bottom - 20, res_text[:58], font="F1", size=7.5, r=0.1, g=0.1, b=0.1)
+    builder.text(mid_x + 6, b17_bottom - 20, res_text[:58], font="F1", size=8.0, r=0.1, g=0.1, b=0.1)
 
     # Row 3: Box 3 (Delivery place, h=30) & Box 4 (Taking over, h=30)
     b3_top = b2_bottom
@@ -230,22 +236,22 @@ def render_cmr_page_stream(doc: CMRDocument, copy_key: str = "1") -> bytes:
     builder.line(mid_x, b3_top, mid_x, b3_bottom)
     
     # Box 3: Place of delivery
-    builder.text(left + 4, b3_top - 8, "3  Lieu prévu pour la livraison / Place of delivery of the goods", font="F2", size=6.5, r=0.1, g=0.1, b=0.1)
+    builder.text(left + 4, b3_top - 8, "3  Lieu prévu pour la livraison / Place of delivery of the goods", font="F2", size=7.0, r=0.1, g=0.1, b=0.1)
     del_str = f"Place: {doc.delivery_place or '-'}   |   Country: {doc.delivery_country or '-'}"
-    builder.text(left + 8, b3_top - 20, del_str, font="F1", size=8.0)
+    builder.text(left + 6, b3_top - 20, del_str, font="F2", size=8.5)
     
     # Box 4: Taking over goods
-    builder.text(mid_x + 4, b3_top - 8, "4  Lieu et date de prise en charge / Place & date of taking over", font="F2", size=6.5, r=0.1, g=0.1, b=0.1)
+    builder.text(mid_x + 4, b3_top - 8, "4  Lieu et date de prise en charge / Place & date of taking over", font="F2", size=7.0, r=0.1, g=0.1, b=0.1)
     to_str = f"Place: {doc.taking_over_place or '-'}   |   Date: {doc.taking_over_date or '-'}"
-    builder.text(mid_x + 8, b3_top - 20, to_str, font="F1", size=8.0)
+    builder.text(mid_x + 6, b3_top - 20, to_str, font="F2", size=8.5)
 
     # Row 4: Box 5 (Documents attached, full width, h=24)
     b5_top = b3_bottom
     b5_h = 24.0
     b5_bottom = b5_top - b5_h
     builder.line(left, b5_bottom, right, b5_bottom)
-    builder.text(left + 4, b5_top - 8, "5  Documents annexés / Documents attached (Invoice, packing list, certificates)", font="F2", size=6.5, r=0.1, g=0.1, b=0.1)
-    builder.text(left + 8, b5_top - 18, (doc.documents_attached or "None")[:110], font="F1", size=7.5)
+    builder.text(left + 4, b5_top - 8, "5  Documents annexés / Documents attached (Invoice, packing list, certificates)", font="F2", size=7.0, r=0.1, g=0.1, b=0.1)
+    builder.text(left + 6, b5_top - 18, (doc.documents_attached or "None")[:110], font="F1", size=8.0)
 
     # ------------------ MIDDLE SECTION: GOODS TABLE (Boxes 6 to 12) ------------------
     table_top = b5_bottom
@@ -293,43 +299,43 @@ def render_cmr_page_stream(doc: CMRDocument, copy_key: str = "1") -> bytes:
     # Column titles
     th_y = table_top - 8
     th_y2 = table_top - 16
-    builder.text(col_x[0] + 3, th_y, "6 Marques et No", font="F2", size=5.5)
-    builder.text(col_x[0] + 3, th_y2, "Marks & Nos", font="F1", size=5.5)
+    builder.text(col_x[0] + 3, th_y, "6 Marques et No", font="F2", size=6.5)
+    builder.text(col_x[0] + 3, th_y2, "Marks & Nos", font="F1", size=6.0)
     
-    builder.text(col_x[1] + 3, th_y, "7 Nb colis", font="F2", size=5.5)
-    builder.text(col_x[1] + 3, th_y2, "No packages", font="F1", size=5.5)
+    builder.text(col_x[1] + 3, th_y, "7 Nb colis", font="F2", size=6.5)
+    builder.text(col_x[1] + 3, th_y2, "No packages", font="F1", size=6.0)
     
-    builder.text(col_x[2] + 3, th_y, "8 Mode embal.", font="F2", size=5.5)
-    builder.text(col_x[2] + 3, th_y2, "Method packing", font="F1", size=5.5)
+    builder.text(col_x[2] + 3, th_y, "8 Mode embal.", font="F2", size=6.5)
+    builder.text(col_x[2] + 3, th_y2, "Method packing", font="F1", size=6.0)
     
-    builder.text(col_x[3] + 3, th_y, "9 Nature de la marchandise / ADR Class", font="F2", size=6.0)
-    builder.text(col_x[3] + 3, th_y2, "Nature of goods (ADR UN / Class / Group)", font="F1", size=5.5)
+    builder.text(col_x[3] + 3, th_y, "9 Nature de la marchandise / ADR Class", font="F2", size=6.8)
+    builder.text(col_x[3] + 3, th_y2, "Nature of goods (ADR UN / Class / Group)", font="F1", size=6.0)
     
-    builder.text(col_x[4] + 3, th_y, "10 No statist.", font="F2", size=5.5)
-    builder.text(col_x[4] + 3, th_y2, "Statistical No", font="F1", size=5.5)
+    builder.text(col_x[4] + 3, th_y, "10 No statist.", font="F2", size=6.5)
+    builder.text(col_x[4] + 3, th_y2, "Statistical No", font="F1", size=6.0)
     
-    builder.text(col_x[5] + 3, th_y, "11 Poids brut kg", font="F2", size=5.5)
-    builder.text(col_x[5] + 3, th_y2, "Gross weight kg", font="F1", size=5.5)
+    builder.text(col_x[5] + 3, th_y, "11 Poids brut kg", font="F2", size=6.5)
+    builder.text(col_x[5] + 3, th_y2, "Gross weight kg", font="F1", size=6.0)
     
-    builder.text(col_x[6] + 3, th_y, "12 Volume m³", font="F2", size=5.5)
-    builder.text(col_x[6] + 3, th_y2, "Volume m³", font="F1", size=5.5)
+    builder.text(col_x[6] + 3, th_y, "12 Volume m³", font="F2", size=6.5)
+    builder.text(col_x[6] + 3, th_y2, "Volume m³", font="F1", size=6.0)
 
     # Render cargo item rows
     item_y = table_top - table_header_h - 13.0
     for idx, item in enumerate(doc.items[:6]):
-        builder.text(col_x[0] + 3, item_y, (item.marks_and_numbers or "-")[:16], font="F1", size=7.0)
-        builder.text(col_x[1] + 6, item_y, str(item.packages_count), font="F1", size=7.5)
-        builder.text(col_x[2] + 3, item_y, (item.packing_method or "-")[:14], font="F1", size=7.0)
+        builder.text(col_x[0] + 3, item_y, (item.marks_and_numbers or "-")[:16], font="F1", size=8.0)
+        builder.text(col_x[1] + 6, item_y, str(item.packages_count), font="F2", size=8.5)
+        builder.text(col_x[2] + 3, item_y, (item.packing_method or "-")[:14], font="F1", size=8.0)
         
         # Nature of goods + ADR note
         desc = item.nature_of_goods[:44]
-        builder.text(col_x[3] + 3, item_y, desc, font="F2", size=7.5)
+        builder.text(col_x[3] + 3, item_y, desc, font="F2", size=8.5)
         if item.adr_details:
-            builder.text(col_x[3] + 3, item_y - 8, f"ADR: {item.adr_details[:40]}", font="F1", size=6.5, r=0.8, g=0.1, b=0.1)
+            builder.text(col_x[3] + 3, item_y - 8, f"ADR: {item.adr_details[:40]}", font="F2", size=7.2, r=0.8, g=0.1, b=0.1)
             
-        builder.text(col_x[4] + 3, item_y, (item.statistical_number or "-")[:10], font="F1", size=7.0)
-        builder.text(col_x[5] + 6, item_y, f"{item.gross_weight_kg:,.1f}", font="F2", size=7.5)
-        builder.text(col_x[6] + 6, item_y, f"{item.volume_m3:,.2f}" if item.volume_m3 else "-", font="F1", size=7.5)
+        builder.text(col_x[4] + 3, item_y, (item.statistical_number or "-")[:10], font="F1", size=8.0)
+        builder.text(col_x[5] + 6, item_y, f"{item.gross_weight_kg:,.1f}", font="F2", size=8.5)
+        builder.text(col_x[6] + 6, item_y, f"{item.volume_m3:,.2f}" if item.volume_m3 else "-", font="F1", size=8.0)
         
         item_y -= 24.0
 
@@ -338,10 +344,10 @@ def render_cmr_page_stream(doc: CMRDocument, copy_key: str = "1") -> bytes:
     totals_y = table_bottom
     builder.set_fill_color(0.92, 0.94, 0.97)
     builder.rect(left, totals_y, width, totals_h, stroke=True, fill=True)
-    builder.text(left + 8, totals_y + 5, "TOTALS / TOTAL:", font="F2", size=7.5, r=0.1, g=0.1, b=0.1)
-    builder.text(col_x[1] + 6, totals_y + 5, f"{doc.total_packages} pkgs", font="F2", size=7.5, r=cr, g=cg, b=cb)
-    builder.text(col_x[5] + 6, totals_y + 5, f"{doc.total_gross_weight_kg:,.1f} kg", font="F2", size=8.0, r=cr, g=cg, b=cb)
-    builder.text(col_x[6] + 6, totals_y + 5, f"{doc.total_volume_m3:,.2f} m³", font="F2", size=7.5, r=cr, g=cg, b=cb)
+    builder.text(left + 8, totals_y + 5, "TOTALS / TOTAL:", font="F2", size=8.2, r=0.1, g=0.1, b=0.1)
+    builder.text(col_x[1] + 6, totals_y + 5, f"{doc.total_packages} pkgs", font="F2", size=8.5, r=cr, g=cg, b=cb)
+    builder.text(col_x[5] + 6, totals_y + 5, f"{doc.total_gross_weight_kg:,.1f} kg", font="F2", size=8.5, r=cr, g=cg, b=cb)
+    builder.text(col_x[6] + 6, totals_y + 5, f"{doc.total_volume_m3:,.2f} m³", font="F2", size=8.2, r=cr, g=cg, b=cb)
 
     # ------------------ LOWER MIDDLE SECTION (Boxes 13, 14, 15, 19, 20) ------------------
     lm_top = totals_y
@@ -354,35 +360,35 @@ def render_cmr_page_stream(doc: CMRDocument, copy_key: str = "1") -> bytes:
     builder.line(lm_mid, lm_top, lm_mid, lm_bottom)
     
     # Box 13: Sender instructions
-    builder.text(left + 4, lm_top - 8, "13  Instructions de l'expéditeur / Sender's instructions", font="F2", size=6.5)
+    builder.text(left + 4, lm_top - 8, "13  Instructions de l'expéditeur / Sender's instructions", font="F2", size=7.0)
     ins_lines = (doc.sender_instructions or "None").split("\n")
     iy = lm_top - 18
     for l in ins_lines[:4]:
-        builder.text(left + 8, iy, l[:50], font="F1", size=7.0)
-        iy -= 8.5
+        builder.text(left + 8, iy, l[:50], font="F1", size=7.8)
+        iy -= 9.0
         
     # Box 14 (COD) & Box 15 (Carriage paid) at bottom of left half
     b14_y = lm_bottom + 22.0
     builder.line(left, b14_y, lm_mid, b14_y)
-    builder.text(left + 4, b14_y - 7, "14  Remboursement / Cash on delivery", font="F2", size=5.5)
-    builder.text(left + 8, b14_y - 17, doc.cod_amount or "N/A", font="F1", size=7.5)
+    builder.text(left + 4, b14_y - 7, "14  Remboursement / Cash on delivery", font="F2", size=6.5)
+    builder.text(left + 8, b14_y - 17, doc.cod_amount or "N/A", font="F2", size=8.2)
     
     b15_x = left + (width * 0.26)
     builder.line(b15_x, lm_bottom, b15_x, b14_y)
-    builder.text(b15_x + 4, b14_y - 7, "15  Paiement transport / Carriage", font="F2", size=5.5)
-    builder.text(b15_x + 8, b14_y - 17, doc.payment_instructions[:20], font="F1", size=7.0)
+    builder.text(b15_x + 4, b14_y - 7, "15  Paiement transport / Carriage", font="F2", size=6.5)
+    builder.text(b15_x + 8, b14_y - 17, doc.payment_instructions[:20], font="F1", size=7.8)
 
     # Right side: Box 19 (Conventions particulières, h=28) & Box 20 (Charges, h=44)
     b19_bottom = lm_top - 28.0
     builder.line(lm_mid, b19_bottom, right, b19_bottom)
-    builder.text(lm_mid + 4, lm_top - 8, "19  Conventions particulières / Special agreements", font="F2", size=6.5)
-    builder.text(lm_mid + 8, lm_top - 18, (doc.special_agreements or "CMR Convention 1956 applies.")[:52], font="F1", size=7.0)
+    builder.text(lm_mid + 4, lm_top - 8, "19  Conventions particulières / Special agreements", font="F2", size=7.0)
+    builder.text(lm_mid + 8, lm_top - 18, (doc.special_agreements or "CMR Convention 1956 applies.")[:52], font="F1", size=7.8)
     
     # Box 20: Charges breakdown
-    builder.text(lm_mid + 4, b19_bottom - 8, "20  À payer par / To be paid by", font="F2", size=6.5)
-    builder.text(lm_mid + 80, b19_bottom - 8, f"Expéditeur (Sender) / Destinataire ({doc.charges.currency})", font="F1", size=5.5)
-    builder.text(lm_mid + 8, b19_bottom - 18, f"Prix de transport (Carriage charges):  {doc.charges.carriage_paid:.2f} {doc.charges.currency}", font="F1", size=7.0)
-    builder.text(lm_mid + 8, b19_bottom - 28, f"Solde / Balance:                      {doc.charges.balance_sender:.2f} {doc.charges.currency}", font="F2", size=7.0, r=cr, g=cg, b=cb)
+    builder.text(lm_mid + 4, b19_bottom - 8, "20  À payer par / To be paid by", font="F2", size=7.0)
+    builder.text(lm_mid + 80, b19_bottom - 8, f"Expéditeur (Sender) / Destinataire ({doc.charges.currency})", font="F1", size=6.0)
+    builder.text(lm_mid + 8, b19_bottom - 18, f"Prix de transport (Carriage charges):  {doc.charges.carriage_paid:.2f} {doc.charges.currency}", font="F1", size=7.8)
+    builder.text(lm_mid + 8, b19_bottom - 28, f"Solde / Balance:                      {doc.charges.balance_sender:.2f} {doc.charges.currency}", font="F2", size=8.2, r=cr, g=cg, b=cb)
 
     # ------------------ BOTTOM SECTION: SIGNATURES (Boxes 21, 22, 23, 24) ------------------
     # Box 21: Established place/date across top of signature area
@@ -391,9 +397,9 @@ def render_cmr_page_stream(doc: CMRDocument, copy_key: str = "1") -> bytes:
     b21_bottom = b21_top - b21_h
     builder.line(left, b21_bottom, right, b21_bottom)
     
-    builder.text(left + 4, b21_top - 7, "21  Établi à / le / Established in / on", font="F2", size=6.5)
+    builder.text(left + 4, b21_top - 7, "21  Établi à / le / Established in / on", font="F2", size=7.0)
     est_str = f"Established at: {doc.established_place or '-'}        Date: {doc.established_date or '-'}"
-    builder.text(left + 8, b21_top - 15, est_str, font="F2", size=8.0, r=0.1, g=0.1, b=0.1)
+    builder.text(left + 8, b21_top - 15, est_str, font="F2", size=8.5, r=0.1, g=0.1, b=0.1)
 
     # Signatures: 3 equal columns: Box 22 (Sender), Box 23 (Carrier), Box 24 (Consignee)
     sig_top = b21_bottom
@@ -405,44 +411,44 @@ def render_cmr_page_stream(doc: CMRDocument, copy_key: str = "1") -> bytes:
     builder.line(sig_x2, sig_top, sig_x2, bottom)
     
     # Box 22: Sender signature
-    builder.text(left + 4, sig_top - 8, "22  Signature et timbre de l'expéditeur", font="F2", size=6.0)
-    builder.text(left + 4, sig_top - 15, "Signature and stamp of the sender", font="F1", size=5.5)
-    builder.text(left + 8, sig_top - 24, f"Date: {doc.taking_over_date or '___/___/2026'}", font="F1", size=6.5, r=0.4, g=0.4, b=0.4)
+    builder.text(left + 4, sig_top - 8, "22  Signature et timbre de l'expéditeur", font="F2", size=6.8)
+    builder.text(left + 4, sig_top - 15, "Signature and stamp of the sender", font="F1", size=6.0)
+    builder.text(left + 8, sig_top - 24, f"Date: {doc.taking_over_date or '___/___/2026'}", font="F1", size=7.2, r=0.3, g=0.3, b=0.3)
     if doc.sender_signer_name:
-        builder.text(left + 8, sig_top - 33, f"Signer: {doc.sender_signer_name}", font="F2", size=7.0)
+        builder.text(left + 8, sig_top - 33, f"Signer: {doc.sender_signer_name}", font="F2", size=7.8)
         builder.line(left + 8, sig_top - 46, sig_x1 - 10, sig_top - 46)
-        builder.text(left + 12, sig_top - 42, "[ Digitally Certified / Signé ]", font="F1", size=7.0, r=cr, g=cg, b=cb)
+        builder.text(left + 12, sig_top - 42, "[ Digitally Certified / Signé ]", font="F1", size=7.5, r=cr, g=cg, b=cb)
     else:
         builder.line(left + 8, sig_top - 46, sig_x1 - 10, sig_top - 46)
-        builder.text(left + 12, sig_top - 54, "(Signature / Stamp)", font="F1", size=6.0, r=0.5, g=0.5, b=0.5)
+        builder.text(left + 12, sig_top - 54, "(Signature / Stamp)", font="F1", size=6.5, r=0.5, g=0.5, b=0.5)
 
     # Box 23: Carrier signature
-    builder.text(sig_x1 + 4, sig_top - 8, "23  Signature et timbre du transporteur", font="F2", size=6.0)
-    builder.text(sig_x1 + 4, sig_top - 15, "Signature and stamp of the carrier", font="F1", size=5.5)
-    builder.text(sig_x1 + 8, sig_top - 24, f"Prise en charge: {doc.taking_over_date or '___/___/2026'}", font="F1", size=6.5, r=0.4, g=0.4, b=0.4)
+    builder.text(sig_x1 + 4, sig_top - 8, "23  Signature et timbre du transporteur", font="F2", size=6.8)
+    builder.text(sig_x1 + 4, sig_top - 15, "Signature and stamp of the carrier", font="F1", size=6.0)
+    builder.text(sig_x1 + 8, sig_top - 24, f"Prise en charge: {doc.taking_over_date or '___/___/2026'}", font="F1", size=7.2, r=0.3, g=0.3, b=0.3)
     if doc.carrier_driver_name:
-        builder.text(sig_x1 + 8, sig_top - 33, f"Driver: {doc.carrier_driver_name}", font="F2", size=7.0)
+        builder.text(sig_x1 + 8, sig_top - 33, f"Driver: {doc.carrier_driver_name}", font="F2", size=7.8)
         builder.line(sig_x1 + 8, sig_top - 46, sig_x2 - 10, sig_top - 46)
-        builder.text(sig_x1 + 12, sig_top - 42, "[ Driver Signed / Prise en charge ]", font="F1", size=7.0, r=cr, g=cg, b=cb)
+        builder.text(sig_x1 + 12, sig_top - 42, "[ Driver Signed / Prise en charge ]", font="F1", size=7.5, r=cr, g=cg, b=cb)
     else:
         builder.line(sig_x1 + 8, sig_top - 46, sig_x2 - 10, sig_top - 46)
-        builder.text(sig_x1 + 12, sig_top - 54, "(Driver Signature / Stamp)", font="F1", size=6.0, r=0.5, g=0.5, b=0.5)
+        builder.text(sig_x1 + 12, sig_top - 54, "(Driver Signature / Stamp)", font="F1", size=6.5, r=0.5, g=0.5, b=0.5)
 
     # Box 24: Consignee signature (Goods received)
-    builder.text(sig_x2 + 4, sig_top - 8, "24  Marchandises reçues / Goods received", font="F2", size=6.0)
-    builder.text(sig_x2 + 4, sig_top - 15, "Signature et timbre du destinataire / Consignee", font="F1", size=5.5)
-    builder.text(sig_x2 + 8, sig_top - 24, f"Date: {doc.goods_received_date or '___/___/2026'}", font="F1", size=6.5, r=0.4, g=0.4, b=0.4)
+    builder.text(sig_x2 + 4, sig_top - 8, "24  Marchandises reçues / Goods received", font="F2", size=6.8)
+    builder.text(sig_x2 + 4, sig_top - 15, "Signature et timbre du destinataire / Consignee", font="F1", size=6.0)
+    builder.text(sig_x2 + 8, sig_top - 24, f"Date: {doc.goods_received_date or '___/___/2026'}", font="F1", size=7.2, r=0.3, g=0.3, b=0.3)
     if doc.consignee_receiver_name:
-        builder.text(sig_x2 + 8, sig_top - 33, f"Received by: {doc.consignee_receiver_name}", font="F2", size=7.0)
+        builder.text(sig_x2 + 8, sig_top - 33, f"Received by: {doc.consignee_receiver_name}", font="F2", size=7.8)
         builder.line(sig_x2 + 8, sig_top - 46, right - 10, sig_top - 46)
-        builder.text(sig_x2 + 12, sig_top - 42, "[ Delivered & Received / Reçu ]", font="F1", size=7.0, r=cr, g=cg, b=cb)
+        builder.text(sig_x2 + 12, sig_top - 42, "[ Delivered & Received / Reçu ]", font="F1", size=7.5, r=cr, g=cg, b=cb)
     else:
         builder.line(sig_x2 + 8, sig_top - 46, right - 10, sig_top - 46)
-        builder.text(sig_x2 + 12, sig_top - 54, "(Consignee Signature / Stamp)", font="F1", size=6.0, r=0.5, g=0.5, b=0.5)
+        builder.text(sig_x2 + 12, sig_top - 54, "(Consignee Signature / Stamp)", font="F1", size=6.5, r=0.5, g=0.5, b=0.5)
 
     # Official Footer Note
-    builder.text(left + 4, bottom - 10, "International Consignment Note under the Convention on the Contract for the International Carriage of Goods by Road (CMR 1956)", font="F1", size=5.5, r=0.4, g=0.4, b=0.4)
-    builder.text(right - 120, bottom - 10, f"Page 1 / {theme['name'][:12]}", font="F2", size=5.5, r=0.4, g=0.4, b=0.4)
+    builder.text(left + 4, bottom - 10, "International Consignment Note under the Convention on the Contract for the International Carriage of Goods by Road (CMR 1956)", font="F1", size=6.0, r=0.3, g=0.3, b=0.3)
+    builder.text(right - 120, bottom - 10, f"Page 1 / {theme['name'][:12]}", font="F2", size=6.0, r=0.3, g=0.3, b=0.3)
 
     return builder.get_stream()
 
