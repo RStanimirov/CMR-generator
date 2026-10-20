@@ -106,30 +106,31 @@ export const CMRFormEditor: React.FC<CMRFormEditorProps> = ({
       {/* Top Presets Bar */}
       <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 flex-wrap gap-2">
         <div className="flex items-center gap-1.5 text-xs text-neutral-600">
-          <Sparkles className="h-3.5 w-3.5 text-neutral-500" />
-          <span className="font-semibold text-neutral-800">Quick Presets:</span>
+          {/* <Sparkles className="h-3.5 w-3.5 text-neutral-500" />
+          <span className="font-semibold text-neutral-800">Quick Presets:</span> */}
         </div>
 
         <div className="flex items-center gap-1.5 flex-wrap">
-          <button
+          {/* <button
             onClick={() => applyPreset('general_cargo')}
             className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 hover:bg-neutral-100 transition-colors shadow-2xs"
           >
             General Freight
-          </button>
-          <button
+          </button> */}
+          {/* <button
             onClick={() => applyPreset('adr_chemicals')}
             className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 hover:bg-neutral-100 transition-colors shadow-2xs flex items-center gap-1"
           >
             <AlertTriangle className="h-3 w-3 text-amber-600" />
             ADR Chemicals
-          </button>
-          <button
+          </button> */}
+          {/* <button
             onClick={() => applyPreset('cold_chain')}
             className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 hover:bg-neutral-100 transition-colors shadow-2xs"
           >
             Cold Chain
-          </button>
+          </button> */}
+          <small>The filled contents can be erased by clicking the "Blank" button: </small>
           <button
             onClick={() => applyPreset('blank')}
             className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-600 hover:bg-neutral-100 transition-colors shadow-2xs"
