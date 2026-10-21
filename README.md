@@ -26,8 +26,6 @@ The primary purpose of this application is to demonstrate software engineering t
 ### Frontend Setup (TypeScript / React)
 ```bash
 # Install dependencies
-npm install esbuild@^0.27.0 --save-dev
-
 npm install
 
 # Start the local Vite development server
