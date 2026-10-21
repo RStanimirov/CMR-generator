@@ -25,7 +25,6 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   return (
     <header className="sticky top-0 z-30 flex items-center justify-between gap-8 border-b border-neutral-200 bg-white/95 px-6 py-3.5 backdrop-blur-md">
-      {/* Zone 1: Brand Wordmark (Single text element) */}
       <a
         href="#"
         onClick={(e) => {
@@ -40,7 +39,6 @@ export const Header: React.FC<HeaderProps> = ({
         <span>CMR Generator</span>
       </a>
 
-      {/* Zone 2: 4-5 Concise Single-Line Nav Links */}
       <nav className="hidden lg:flex items-center gap-6 text-xs font-medium text-neutral-600">
         <button
           onClick={() => onNavigateSection('parties')}
@@ -83,7 +81,6 @@ export const Header: React.FC<HeaderProps> = ({
         </button> */}
       </nav>
 
-      {/* Zone 3: 1 Primary Action with Secondary Affordances */}
       <div className="flex items-center gap-2.5 shrink-0">
         {/* <button
           onClick={onPrint}

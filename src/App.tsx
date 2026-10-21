@@ -5,7 +5,7 @@ import { CMRDocumentView } from './components/CMRDocumentView';
 import { SignatureModal } from './components/SignatureModal';
 import { PythonCodeModal } from './components/PythonCodeModal';
 import { CMRConsignment, CMRCopyType } from './types/cmr';
-import { SAMPLE_PRESETS } from './utils/presets';
+import { createEmptyConsignment } from './utils/presets';
 import { generateCMRPdf } from './utils/pdfGenerator';
 import confetti from 'canvas-confetti';
 import { AlertCircle, CheckCircle, Eye, Edit3, Code2, Download } from 'lucide-react';
@@ -22,7 +22,7 @@ export default function App() {
     } catch {
       // ignore
     }
-    return SAMPLE_PRESETS.general_cargo.data;
+    return createEmptyConsignment();
   });
 
   const [selectedCopy, setSelectedCopy] = useState<CMRCopyType>('1_sender');
@@ -110,8 +110,8 @@ export default function App() {
   };
 
   const handleReset = () => {
-    if (window.confirm('Reset consignment note to default sample?')) {
-      setConsignment(SAMPLE_PRESETS.general_cargo.data);
+    if (window.confirm('Clear consignment note and start with a blank form?')) {
+      setConsignment(createEmptyConsignment());
     }
   };
 

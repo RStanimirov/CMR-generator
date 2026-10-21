@@ -130,7 +130,7 @@ export const CMR_COPIES: Record<string, CopyMetadata> = {
     badgeBg: 'bg-violet-50 text-violet-700 border-violet-200',
     borderColor: 'border-violet-400',
     textColor: 'text-violet-600',
-    accentHex: '#8b5cf6'
+    accentHex: '#C4121A'
   },
   '2_consignee': {
     id: '2_consignee',

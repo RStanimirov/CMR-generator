@@ -13,11 +13,9 @@ import {
   FileText,
   DollarSign,
   PenTool,
-  AlertTriangle,
-  Sparkles,
   Info
 } from 'lucide-react';
-import { SAMPLE_PRESETS } from '../utils/presets';
+import { createEmptyConsignment } from '../utils/presets';
 
 interface CMRFormEditorProps {
   consignment: CMRConsignment;
@@ -94,50 +92,20 @@ export const CMRFormEditor: React.FC<CMRFormEditorProps> = ({
   const totalWeight = consignment.items.reduce((s, it) => s + (Number(it.grossWeightKg) || 0), 0);
   const totalVol = consignment.items.reduce((s, it) => s + (Number(it.volumeM3) || 0), 0);
 
-  const applyPreset = (key: string) => {
-    const preset = SAMPLE_PRESETS[key];
-    if (preset) {
-      onChange({ ...preset.data });
-    }
-  };
-
   return (
     <div className="flex flex-col h-full bg-white rounded-xl border border-neutral-200 overflow-hidden shadow-xs">
-      {/* Top Presets Bar */}
       <div className="flex items-center justify-between border-b border-neutral-200 bg-neutral-50 px-4 py-2.5 flex-wrap gap-2">
-        <div className="flex items-center gap-1.5 text-xs text-neutral-600">
-          {/* <Sparkles className="h-3.5 w-3.5 text-neutral-500" />
-          <span className="font-semibold text-neutral-800">Quick Presets:</span> */}
-        </div>
-
-        <div className="flex items-center gap-1.5 flex-wrap">
-          {/* <button
-            onClick={() => applyPreset('general_cargo')}
-            className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 hover:bg-neutral-100 transition-colors shadow-2xs"
-          >
-            General Freight
-          </button> */}
-          {/* <button
-            onClick={() => applyPreset('adr_chemicals')}
-            className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 hover:bg-neutral-100 transition-colors shadow-2xs flex items-center gap-1"
-          >
-            <AlertTriangle className="h-3 w-3 text-amber-600" />
-            ADR Chemicals
-          </button> */}
-          {/* <button
-            onClick={() => applyPreset('cold_chain')}
-            className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-700 hover:bg-neutral-100 transition-colors shadow-2xs"
-          >
-            Cold Chain
-          </button> */}
-          <small>The filled contents can be erased by clicking the "Blank" button: </small>
-          <button
-            onClick={() => applyPreset('blank')}
-            className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-600 hover:bg-neutral-100 transition-colors shadow-2xs"
-          >
-            Blank
-          </button>
-        </div>
+        <span className="text-xs text-neutral-500 font-medium">Consignment Details</span>
+        <button
+          onClick={() => {
+            if (window.confirm('Clear all fields and reset to blank?')) {
+              onChange(createEmptyConsignment());
+            }
+          }}
+          className="rounded-md border border-neutral-200 bg-white px-2.5 py-1 text-xs font-medium text-neutral-600 hover:bg-neutral-100 transition-colors shadow-2xs"
+        >
+          Clear Form
+        </button>
       </div>
 
       {/* Editor Navigation Tabs */}

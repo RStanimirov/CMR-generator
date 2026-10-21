@@ -7,11 +7,15 @@ name = "python-cmr"
 version = "1.0.0"
 description = "International Consignment Note (CMR Convention 1956) Generator in Python"
 readme = "README.md"
-authors = [{ name = "CMR Pro Logistics" }]
+authors = [{ name = "RStanimirov" }]
 license = { text = "MIT" }
 keywords = ["cmr", "logistics", "consignment-note", "freight", "transport", "waybill", "pdf"]
 requires-python = ">=3.8"
 dependencies = []
+
+[project.urls]
+Homepage = "https://github.com/RStanimirov/CMR-generator"
+Repository = "https://github.com/RStanimirov/CMR-generator.git"
 
 [project.optional-dependencies]
 dev = [

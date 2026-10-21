@@ -1,7 +1,0 @@
-{
-  "name": "CMR Generator - International Consignment Note",
-  "description": "Generate, validate, and export official 24-box UN CMR International Consignment Notes with multi-color copy support, digital signatures, and exportable Python project for GitHub.",
-  "requestFramePermissions": [],
-  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
-}
-

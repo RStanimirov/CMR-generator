@@ -174,77 +174,77 @@ class CMRDocument:
 
 
 def create_sample_cmr() -> CMRDocument:
-    """Returns an authentic sample international CMR consignment document."""
+    """Returns a generic sample international CMR consignment document."""
     return CMRDocument(
         consignment_number="CMR-2026-EU-7890",
         sender=Party(
-            name="EURO-LOGISTICS INDUSTRIE GMBH",
-            address="Industriestrasse 45-47, Tor 8",
+            name="SAMPLE SENDER GMBH",
+            address="100 Logistics Way",
             city_postal="60314 Frankfurt am Main",
             country="Germany",
-            contact_phone="+49 69 9876 5430",
-            contact_email="dispatch@euro-logistics.de",
-            vat_id="DE812345678"
+            contact_phone="+49 000 000000",
+            contact_email="sender@example.com",
+            vat_id="DE000000000"
         ),
         consignee=Party(
-            name="TRANS-FRANCE DISTRIBUTION SAS",
-            address="12 Rue du Port Fluvial, Z.I. Nord",
+            name="SAMPLE CONSIGNEE SAS",
+            address="12 Rue du Port Fluvial",
             city_postal="69007 Lyon",
             country="France",
-            contact_phone="+33 4 72 00 11 22",
-            contact_email="reception@trans-france.fr",
-            vat_id="FR45987654321"
+            contact_phone="+33 000 000000",
+            contact_email="consignee@example.com",
+            vat_id="FR00000000000"
         ),
-        delivery_place="Lyon, Z.I. Nord, Entrepôt B",
+        delivery_place="Lyon, Entrepôt B",
         delivery_country="France",
         taking_over_place="Frankfurt am Main",
         taking_over_country="Germany",
         taking_over_date="2026-10-20",
-        documents_attached="Commercial Invoice #INV-2026-4412, Packing List (3 pages), EUR.1 Certificate",
+        documents_attached="Commercial Invoice #INV-2026-0001, Packing List",
         items=[
             CargoItem(
-                marks_and_numbers="FR/EXP-01 TO 12",
+                marks_and_numbers="EXP-01 TO 12",
                 packages_count=12,
                 packing_method="Euro-pallets",
-                nature_of_goods="Automotive Precision Transmission Components (Dry, Sealed)",
+                nature_of_goods="Industrial Components (Dry, Sealed)",
                 statistical_number="8708.40.50",
                 gross_weight_kg=4850.0,
                 volume_m3=18.5,
                 adr_details=""
             ),
             CargoItem(
-                marks_and_numbers="FR/EXP-13 TO 18",
+                marks_and_numbers="EXP-13 TO 18",
                 packages_count=6,
                 packing_method="Heavy Wooden Crates",
-                nature_of_goods="Hydraulic Pump Assemblies & Fasteners",
+                nature_of_goods="Mechanical Equipment & Fasteners",
                 statistical_number="8413.60.31",
                 gross_weight_kg=2420.0,
                 volume_m3=8.2,
                 adr_details=""
             )
         ],
-        sender_instructions="Keep dry. Do not double stack wooden crates. Temperature range: +5°C to +30°C. Customs clearance at Strasbourg Border.",
+        sender_instructions="Keep dry. Temperature range: +5°C to +30°C.",
         cod_amount="",
-        payment_instructions="Carriage Paid (Franco domicile)",
+        payment_instructions="Carriage Paid",
         carrier=Party(
-            name="SCHNEIDER SPEDITION & CO. KG",
+            name="SAMPLE CARRIER LOGISTICS",
             address="Rheinhafen 12",
             city_postal="68169 Mannheim",
             country="Germany",
-            contact_phone="+49 621 555 4321",
-            contact_email="ops@schneider-spedition.de",
-            vat_id="DE123987456"
+            contact_phone="+49 000 000001",
+            contact_email="carrier@example.com",
+            vat_id="DE111111111"
         ),
-        carrier_license_plate="MA-SC-8840",
-        carrier_trailer_plate="MA-TR-9120",
+        carrier_license_plate="SAMPLE-TRUCK-01",
+        carrier_trailer_plate="SAMPLE-TRAILER-01",
         successive_carrier=Party(
-            name="RHÔNE EXPRESS CARGO SARL",
-            address="Zone Fret Aéroport St. Exupéry",
-            city_postal="69125 Colombier-Saugnieu",
+            name="SAMPLE SUCCESSIVE CARRIER",
+            address="Zone Fret",
+            city_postal="69125 Lyon",
             country="France"
         ),
-        carrier_reservations="Goods checked in rainproof sealed condition. Pallets shrink-wrapped. Number of packages verified.",
-        special_agreements="CMR Convention 1956 applies. Jurisdiction: Frankfurt/Main.",
+        carrier_reservations="Goods checked in rainproof sealed condition. Pallets shrink-wrapped.",
+        special_agreements="CMR Convention 1956 applies.",
         charges=CarriageCharges(
             carriage_paid=1650.00,
             carriage_forward=0.00,
@@ -256,8 +256,8 @@ def create_sample_cmr() -> CMRDocument:
         ),
         established_place="Frankfurt am Main",
         established_date="2026-10-20",
-        sender_signer_name="K. Müller (Shipping Manager)",
-        carrier_driver_name="Hans Becker (Driver ID 4920)",
-        consignee_receiver_name="Jean Dupont (Warehouse Lead)",
+        sender_signer_name="Authorized Sender Signatory",
+        carrier_driver_name="Carrier Driver",
+        consignee_receiver_name="Consignee Receiver",
         goods_received_date=""
     )

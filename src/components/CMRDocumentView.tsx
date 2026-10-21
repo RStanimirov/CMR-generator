@@ -113,7 +113,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
             {/* Header Box: Conventions & CMR Logo */}
             <div className="grid grid-cols-12 border-b border-neutral-400 shrink-0">
               <div className="col-span-8 p-2.5 border-r border-neutral-400">
-                <h1 className="text-xs font-bold uppercase tracking-tight text-neutral-800">
+                <h1 className="text-xs font-normal uppercase tracking-tight text-neutral-800">
                   INTERNATIONAL CONSIGNMENT NOTE / LETTRE DE VOITURE INTERNATIONALE
                 </h1>
                 <p className="text-[8px] text-neutral-500 leading-tight mt-1">
@@ -126,7 +126,7 @@ export const CMRDocumentView: React.FC<CMRDocumentViewProps> = ({
 
               <div className="col-span-4 p-2.5 flex items-center justify-between bg-neutral-50/50">
                 <div>
-                  <span className="text-2xl font-black tracking-tight" style={{ color: meta.accentHex }}>
+                  <span className="text-4xl font-black tracking-tight" style={{ color: meta.accentHex }}>
                     CMR
                   </span>
                 </div>

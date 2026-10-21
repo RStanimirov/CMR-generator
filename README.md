@@ -6,13 +6,13 @@ Features pure Python PDF generation with zero external dependencies, built-in va
 
 ## Note on Purpose
 
-The primary purpose of this application is to demonstrate software engineering techniques, architectural patterns, and data modeling (such as zero-dependency vector rendering). It is intended as a technical demonstration rather than a certified production-ready solution for official freight registration.
+The primary purpose of this application is to demonstrate software engineering techniques, architectural patterns, and data modeling (such as zero-dependency vector rendering). Initially prototyped with Google AI Studio and refined/optimized via Antigravity, it is intended as a technical demonstration rather than a certified production-ready solution for official freight registration.
 
 ## Key Features
 
 * **Zero-Dependency PDF Engine:** Runs out of the box on standard Python 3.8+ without additional package installations.
 * **4-Copy Booklet Support:** Generates multi-page bundles with custom color schemes:
-  * Copy 1 (Violet): Sender
+  * Copy 1 (Red): Sender
   * Copy 2 (Blue): Consignee
   * Copy 3 (Green): Carrier
   * Copy 4 (Black): Carrier office
